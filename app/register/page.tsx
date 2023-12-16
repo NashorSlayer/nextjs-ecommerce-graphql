@@ -4,7 +4,6 @@ const RegisterPage = () => {
     return (
         <ShowRegister />
     );
-
 }
 
 export default RegisterPage;
