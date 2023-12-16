@@ -4,7 +4,6 @@ import { useMutation } from '@apollo/client';
 import { login } from '../graphql/mutation';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation'
-import logo from '../public/images/Multifruts.png';
 
 const ShowLogin = () => {
 
