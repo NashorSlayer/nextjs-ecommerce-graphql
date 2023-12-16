@@ -21,10 +21,10 @@ const ShowHome = () => {
             <option value="ninety">Hasta 90%</option>
           </select>
   
-          <label className="text-white" htmlFor="category">
+          <label className="text-white" htmlFor="category_filter">
             Categoría:
           </label>
-          <select id="category" className="bg-gray-300 w-full p-2 mb-4 text-black rounded">
+          <select id="category_filter" className="bg-gray-300 w-full p-2 mb-4 text-black rounded">
             <option value="Todos">Todos</option>
             <option value="Mix">Mix</option>
             <option value="A granel">A granel</option>
@@ -46,7 +46,7 @@ const ShowHome = () => {
             <option value="Otros">Otros</option>
           </select>
   
-          <label className="text-white" htmlFor="priceRange">
+          <label className="text-white" htmlFor="minPrice">
             Rango de precios:
           </label>
           <div className="flex mb-4">
@@ -75,13 +75,13 @@ const ShowHome = () => {
             <option value="highest_price">Desde el más caro</option>
           </select>
           <label className="text-white" htmlFor="name">Nombre:</label>
-          <select id="name" className="bg-gray-300 w-full p-2 mb-4 rounded text-black">
+          <select id="name" autoComplete="name" className="bg-gray-300 w-full p-2 mb-4 rounded text-black">
             <option value="orderless">Sin ordenar</option>
             <option value="A-Z_name">De la A a la Z</option>
             <option value="Z-A_name">De la Z a la A</option>
           </select>
-          <label className="text-white" htmlFor="price">Categoría:</label>
-          <select id="price" className="bg-gray-300 w-full p-2 mb-4 rounded text-black">
+          <label className="text-white" htmlFor="category">Categoría:</label>
+          <select id="category" className="bg-gray-300 w-full p-2 mb-4 rounded text-black">
             <option value="orderless">Sin ordenar</option>
             <option value="A-Z_category">De la A a la Z</option>
             <option value="Z-A_category">De la Z a la A</option>

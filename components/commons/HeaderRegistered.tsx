@@ -7,8 +7,8 @@ const HeaderRegistered = () => {
     return (
         <header className="bg-gray-800">
             <div className="container mx-auto flex items-center justify-between p-4">
-                <Link href="/" className="text-2xl font-semibold">
-                    <img className="w-12 h-12" src="multifruts_logo.png" alt="Logo" />
+                <Link href="/">
+                    <img className="w-12 h-12" src="../multifruts_logo.png" alt="Logo" />
                 </Link>
                 <button>
                     <MenuIcon className='ml-3 w-10 h-10 text-gray-300' /> 
@@ -37,13 +37,13 @@ const HeaderRegistered = () => {
                     </div>
                 </div>
                 <div className="ml-2 flex items-center space-x-4">
-                    <button>
-                        <UserCircleIcon className="w-10 h-10 ml-4 text-gray-300" />
-                    </button>
+                    <Link href="/profile">
+                        <UserCircleIcon className="w-8 h-8 ml-4 text-gray-300" />
+                    </Link>
                 </div>
-                <button>
-                    <ShoppingCartIcon className="w-8 h-8 ml-4 text-gray-300" />
-                </button>
+                <Link href="/cart">
+                        <ShoppingCartIcon className="w-8 h-8 ml-4 text-gray-300" />
+                    </Link>
             </div>
         </header>
     );
