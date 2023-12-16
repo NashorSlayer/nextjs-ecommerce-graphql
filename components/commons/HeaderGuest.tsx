@@ -7,7 +7,7 @@ const HeaderGuest = () => {
     return (
         <header className="bg-gray-800">
             <div className="container mx-auto flex items-center justify-between p-4">
-                <Link href="/" className="text-2xl font-semibold">
+                <Link href="/">
                     <img className="w-12 h-12" src="multifruts_logo.png" alt="Logo" />
                 </Link>
                 <button>
@@ -15,6 +15,8 @@ const HeaderGuest = () => {
                 </button>
                 <div className="flex-grow ml-4">
                 <input
+                    id="search"
+                    name='search'
                     type="text"
                     placeholder="Buscar productos"
                     className="w-full px-4 py-2 border border-gray-600 rounded-lg focus:outline-none focus:border-primary-500 text-gray-900"
@@ -27,6 +29,8 @@ const HeaderGuest = () => {
                     <div className="flex items-center">
                         <LocationMarkerIcon className="w-8 h-8 ml-4 text-gray-300" />
                         <select
+                        id='location'
+                        name='location'
                         className="font-bold mx-auto text-white hover:underline bg-transparent appearance-none w-auto border-b-2 border-gray-300 focus:outline-none focus:border-primary-500 rounded-md text-sm p-2"
                         style={{ textAlign: 'center', maxWidth: '100%' }}
                         >

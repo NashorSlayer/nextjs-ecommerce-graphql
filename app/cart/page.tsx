@@ -1,11 +1,11 @@
 import HeaderGuest from '@/components/commons/HeaderGuest';
 import HeaderRegistered from '@/components/commons/HeaderRegistered';
-import ShowHome from '@/components/ShowHome';
+import ShowCart from '@/components/ShowCart';
 
 export default function Home() {
   return (
     <div className='mb-4'>
-      <HeaderRegistered></HeaderRegistered><ShowHome></ShowHome>
+      <HeaderRegistered></HeaderRegistered><ShowCart></ShowCart>
     </div>
   );
 }
