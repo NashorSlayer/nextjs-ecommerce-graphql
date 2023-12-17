@@ -72,7 +72,7 @@ const ShowResetPassword = () => {
                 <a href="/" className="flex items-center mb-3 text-2xl font-semibold text-gray-900 dark:text-white">
                     <img className="w-40 h-40" src="multifruts_logo.png" alt="logo" />
                 </a>
-                <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700" style={{background: "#353734", borderColor: "#9acd1b", borderWidth: 5, borderRadius: 60}}>
                     <div className="p-6 space-y-4 md:space-y-4 sm:p-8">
                         <h1 className="flex items-center justify-center text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                             Recuperar contraseña
@@ -85,7 +85,10 @@ const ShowResetPassword = () => {
                                     type="email"
                                     name="email"
                                     id="email"
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="correo@correo.com" required />
+                                    style={{background: "#9acd1b"}}
+                                    className="text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-white" 
+                                    placeholder="correo@correo.com" 
+                                    required />
                             </div>
                         </form>
                         <button
@@ -96,7 +99,7 @@ const ShowResetPassword = () => {
                         {showPopup && !showChangePasswordPopup && (
                         <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
                             <div className="relative w-auto max-w-sm mx-auto my-6">
-                            <div className="relative flex flex-col bg-gray-600 border-0 rounded-lg shadow-lg outline-none focus:outline-none">
+                            <div className="relative flex flex-col bg-gray-600 border-0 rounded-lg shadow-lg outline-none focus:outline-none"style={{background: "#353734", borderColor: "#9acd1b", borderWidth: 5, borderRadius: 20}}>
                                 <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
                                 <h3 className="text-xl font-semibold text-white">Ingresa el código de verificación enviado tu correo</h3>
                                 <button
@@ -116,7 +119,8 @@ const ShowResetPassword = () => {
                                         onChange={(e) => handleChange(index, e.target.value)}
                                         onKeyDown={(e) => e.key === 'Backspace' && handleBackspace(index, verificationCode[index])}
                                         maxLength={1}
-                                        className="w-1/6 p-2 mx-1 mb-2 border border-gray-300 rounded-md text-black text-center"
+                                        style={{background: "#9acd1b"}}
+                                        className="w-1/6 p-2 mx-1 mb-2 border rounded-md text-white text-center placeholder-white"
                                         placeholder="*"
                                         ref={inputRefs.current[index] as React.RefObject<HTMLInputElement>}
                                         />
@@ -136,7 +140,7 @@ const ShowResetPassword = () => {
                         {showChangePasswordPopup && (
                             <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
                                 <div className="relative w-auto max-w-sm mx-auto my-6">
-                                    <div className="relative flex flex-col bg-gray-600 border-0 rounded-lg shadow-lg outline-none focus:outline-none">
+                                    <div className="relative flex flex-col bg-gray-600 border-0 rounded-lg shadow-lg outline-none focus:outline-none" style={{background: "#353734", borderColor: "#9acd1b", borderWidth: 5, borderRadius: 20}}>
                                         <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
                                             <h3 className="text-xl font-semibold text-white">Cambiar Contraseña</h3>
                                             <button
@@ -153,8 +157,9 @@ const ShowResetPassword = () => {
                                                     onChange={handlePasswordChange}
                                                     type="password"
                                                     value={password}
-                                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                    className="bg-gray-50 border border-gray-300 text-white placeholder-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                     placeholder="Contraseña"
+                                                    style={{background: "#9acd1b"}}
                                                     required
                                                 />
                                             </div>
@@ -164,8 +169,9 @@ const ShowResetPassword = () => {
                                                     onChange={handleConfirmPasswordChange}
                                                     type="password"
                                                     value={confirmPassword}
-                                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                    className="bg-gray-50 border border-gray-300 text-white placeholder-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                     placeholder="Confirmar Contraseña"
+                                                    style={{background: "#9acd1b"}}
                                                     required
                                                 />
                                             </div>

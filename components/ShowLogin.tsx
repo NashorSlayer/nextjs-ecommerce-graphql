@@ -55,7 +55,10 @@ const ShowLogin = () => {
                                     type="email"
                                     name="email"
                                     id="email"
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="correo@correo.com" required />
+                                    style={{background: "#9acd1b"}}
+                                    className="text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-white" 
+                                    placeholder="correo@correo.com" 
+                                    required />
                             </div>
                             <div>
                                 <label id="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contraseña</label>
@@ -66,7 +69,8 @@ const ShowLogin = () => {
                                     id="password"
                                     placeholder="••••••••"
                                     style={{background: "#9acd1b"}}
-                                    className="text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-white" required />
+                                    className="text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-white" 
+                                    required />
 
                             </div>
                             <div className="flex items-center justify-between">

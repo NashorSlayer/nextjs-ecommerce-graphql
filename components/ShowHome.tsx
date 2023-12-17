@@ -1,10 +1,80 @@
 "use client";
 import { FilterIcon, RefreshIcon } from "@heroicons/react/solid";
+import ProductCard from './ProductCard';
+import { useState } from "react";
+
+interface Product {
+  id: number;
+  name: string;
+  category: string;
+  stock: number;
+  price: number;
+  image: string;
+  description: string;
+};
+
+const products: Product[] = [
+  // Hacer llamada al backend para obtener los productos
+  {
+    id: 1,
+    name: 'Producto 1',
+    category: 'Categoría 1',
+    stock: 10,
+    price: 19.99,
+    image: 'no-image.jpg',
+    description: 'Descripción del producto 1',
+  },
+  {
+    id: 2,
+    name: 'Producto 2',
+    category: 'Categoría 2',
+    stock: 20,
+    price: 29.99,
+    image: 'no-image.jpg',
+    description: 'Descripción del producto 2',
+  },
+  {
+    id: 3,
+    name: 'Producto 3',
+    category: 'Categoría 1',
+    stock: 13,
+    price: 9.99,
+    image: 'no-image.jpg',
+    description: 'Descripción del producto 3',
+  },
+  {
+    id: 4,
+    name: 'Producto 4',
+    category: 'Categoría 4',
+    stock: 5,
+    price: 19.99,
+    image: 'no-image.jpg',
+    description: 'Descripción del producto 4',
+  },
+  {
+    id: 5,
+    name: 'Producto 5',
+    category: 'Categoría 3',
+    stock: 8,
+    price: 14.99,
+    image: 'no-image.jpg',
+    description: 'Descripción del producto 5',
+  },
+];  
 
 const ShowHome = () => {
+    const productsPerPage = 4;
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+
+    const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
     return (
       <section className="min-h-screen flex">
-        <aside className="w-1/5 h-1/2 bg-gray-700 p-5 rounded shadow-md mt-auto mb-auto text-sm ml-3">
+        <aside className="w-1/5 h-1/2 bg-gray-700 p-5 rounded shadow-md mt-auto mb-auto text-sm ml-3" style={{borderRadius: 20}}>
           <h2 className="flex items-center justify-center text-white font-semibold mb-4">
             FILTRAR
             <FilterIcon className="w-8 h-8 ml-2 text-gray-300" />
@@ -59,15 +129,39 @@ const ShowHome = () => {
           </button>
         </aside>
   
-        <main className="flex-1 p-6">
-          {/* <p className="text-2xl font-semibold text-white flex items-center justify-center">Aquí van los productos :D</p> */}
+        <main className="flex-1 p-6 bg-gray-700 p-5 rounded shadow-md mt-auto mb-auto text-sm ml-12 mr-12" style={{borderRadius: 20}}>
+          <div className="grid gap-1">
+            {currentProducts.map((product, index) => (
+              <ProductCard key={index} product={product} />
+            ))}
+          </div>
+
+          <div className="mt-4 flex justify-center">
+            {Array.from({ length: Math.ceil(products.length / productsPerPage) }).map((_, index) => (
+              <button
+                key={index}
+                className={`mx-1 px-3 py-1 rounded ${
+                  currentPage === index + 1 ? 'bg-primary-500 text-white' : 'bg-gray-300 text-black'
+                }`}
+                onClick={() => paginate(index + 1)}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
         </main>
-  
-        <aside className="w-1/5 h-1/2 bg-gray-700 p-5 rounded shadow-md mt-auto mb-auto text-sm mr-3">
+
+        <aside className="w-1/5 h-1/2 bg-gray-700 p-5 rounded shadow-md mt-auto mb-auto text-sm mr-3" style={{borderRadius: 20}}>
           <h2 className="flex items-center justify-center text-white font-semibold mb-4">
             ORDENAR
             <RefreshIcon className="w-8 h-8 ml-2 text-gray-300" />
           </h2>
+          <label className="text-white" htmlFor="products">Productos:</label>
+          <select id="products" className="bg-gray-300 w-full p-2 mb-4 rounded text-black">
+            <option value="popular">Populares</option>
+            <option value="newest">Nuevos</option>
+            <option value="orderless">Sin ordenar</option>
+          </select>
           <label className="text-white" htmlFor="price">Precio:</label>
           <select id="price" className="bg-gray-300 w-full p-2 mb-4 rounded text-black">
             <option value="orderless">Sin ordenar</option>

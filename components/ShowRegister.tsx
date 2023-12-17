@@ -53,7 +53,7 @@ const ShowRegister = () => {
                 <a href="/" className="flex items-center mb-3 text-2xl font-semibold text-gray-900 dark:text-white">
                     <img className="w-20 h-20" src="multifruts_logo.png" alt="logo" />
                 </a>
-                <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700" style={{background: "#353734", borderColor: "#9acd1b", borderWidth: 5, borderRadius: 60}}>
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 className="flex items-center justify-center text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                             Registro
@@ -66,7 +66,10 @@ const ShowRegister = () => {
                                     type="email"
                                     name="email"
                                     id="email"
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="correo@correo.com" required />
+                                    style={{background: "#9acd1b"}}
+                                    className="text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-white" 
+                                    placeholder="correo@correo.com" 
+                                    required />
                             </div>
                             <div>
                                 <label id="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
@@ -75,7 +78,10 @@ const ShowRegister = () => {
                                     type="text"
                                     name="text"
                                     id="text"
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required />
+                                    style={{background: "#9acd1b"}}
+                                    className="text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-white" 
+                                    placeholder="John" 
+                                    required />
                             </div>
                             <div>
                                 <label id="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido</label>
@@ -84,7 +90,10 @@ const ShowRegister = () => {
                                     type="text"
                                     name="text"
                                     id="text"
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Doe" required />
+                                    style={{background: "#9acd1b"}}
+                                    className="text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-white" 
+                                    placeholder="Doe" 
+                                    required />
                             </div>
 
                             <div>
@@ -95,7 +104,9 @@ const ShowRegister = () => {
                                     name="password"
                                     id="password"
                                     placeholder="••••••••"
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                                    style={{background: "#9acd1b"}}
+                                    className="text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-white" 
+                                    required />
 
                             </div>
                             <div>
@@ -106,7 +117,9 @@ const ShowRegister = () => {
                                     name="password"
                                     id="password"
                                     placeholder="••••••••"
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                                    style={{background: "#9acd1b"}}
+                                    className="text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-white" 
+                                    required />
 
                             </div>
                             <button
