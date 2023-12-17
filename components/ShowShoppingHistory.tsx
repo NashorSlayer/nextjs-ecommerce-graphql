@@ -34,7 +34,7 @@ const ShowShoppingHistory = () => {
   const paginate = (pageNumber: SetStateAction<number>) => setCurrentPage(pageNumber);
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900">
+    <section>
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <div className="w-auto max-w-full bg-white rounded-lg shadow dark:border md:mt-0 xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-4 space-y-3 md:space-y-4 sm:p-6">
