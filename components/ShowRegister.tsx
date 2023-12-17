@@ -124,7 +124,7 @@ const ShowRegister = () => {
                             </div>
                             <button
                                 onClick={(event) => handleRegister(event)}
-                                className="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium rounded-full text-sm px-5 py-3 text-center border-2 border-primary-600 rounded-md">Regístrate</button>
+                                className="w-full ml-12 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium text-sm px-5 py-3 text-center border-2 border-primary-600"style={{width: "80%", backgroundColor: "#9acd1b", borderRadius: 20}}>Regístrate</button>
                             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                                ¿Ya tienes una cuenta? <Link href="login" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Inicia sesión</Link>
                             </p>
