@@ -61,19 +61,19 @@ const ShowProfile = () => {
                                     name="address"
                                     id="address"
                                     value={address}
-                                    style={{background: "#9acd1b"}}
-                                    className="text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-white" 
+                                    style={{background: "#9acd1b", borderRadius: 20}}
+                                    className="text-white w-full sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5 placeholder-white" 
                                     placeholder="Dirección" 
                                     required />
                             </div>
                 <button
                   onClick={handleUpdateProfile}
-                  className="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium rounded-full text-sm px-5 py-3 text-center border-2 border-primary-600 rounded-md">
+                  className="mt-4 ml-10 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium text-sm px-5 py-3 text-center border-2 border-primary-600" style={{width: "80%", backgroundColor: "#9acd1b", borderRadius: 20}}>
                   Actualizar Datos
                 </button>
                 <button
                   onClick={handleShoppingHistory}
-                  className="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium rounded-full text-sm px-5 py-3 text-center border-2 border-primary-600 rounded-md">
+                  className="mt-4 ml-10 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium text-sm px-5 py-3 text-center border-2 border-primary-600" style={{width: "80%", backgroundColor: "#9acd1b", borderRadius: 20}}>
                   Historial de Compras
                 </button>
               </div>
