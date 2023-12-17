@@ -55,7 +55,7 @@ const products: Product[] = [
     id: 5,
     name: 'Producto 5',
     category: 'Categoría 5',
-    stock: 50,
+    stock: 0,
     price: 50000,
     image: 'no-image.jpg',
     description: 'Descripción del producto 5',
@@ -75,9 +75,11 @@ const ShowHome = () => {
     const productsPerPage = 4;
     const [currentPage, setCurrentPage] = useState(1);
 
+    const availableProducts = products.filter((product) => product.stock > 0);
+
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+    const currentProducts = availableProducts.slice(indexOfFirstProduct, indexOfLastProduct);
 
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
