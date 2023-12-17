@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ShoppingCartIcon from '@heroicons/react/outline/ShoppingCartIcon';
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { AddToCart, SetTotal } from "@/redux/cartSlice";
 
 interface Product {
     id: number;
@@ -11,7 +13,29 @@ interface Product {
     description: string;
 };
 
-const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
+interface ProductCardProps {
+  product: Product;
+  quantity: number;
+}
+
+const ProductCard: React.FC<{product: Product}> = ({ product }) => {
+  const cartItems = useAppSelector((state) => state.cart.products);
+  const dispatch = useAppDispatch();
+  const [quantity, setQuantity] = useState<number>(0);
+
+  const handleAddToCart = (productProp: ProductCardProps) => {
+    if (cartItems.find((item) => item.product.id === productProp.product.id)) {
+      alert("Este producto ya está en el carrito");
+      return;
+    } else if (productProp.quantity === 0) {
+      alert("Debes seleccionar una cantidad mayor a 0");
+      return;
+    } else {
+      alert("Producto agregado al carrito");
+      dispatch(AddToCart(productProp));
+      dispatch(SetTotal());
+    }
+  };
   return (
     <div className="bg-gray-600 flex items-center justify-between mb-2 border p-4" style={{borderColor: "#9acd1b", borderWidth: 1, borderRadius: 20}}>
       <div className="flex flex-col items-center">
@@ -40,8 +64,10 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
           placeholder='0'
           min="0"
           max={product.stock}
+          value={quantity}
+          onChange={(e) => setQuantity(Number(e.target.value))}
         />
-        <button className="bg-primary-500 text-white px-2 py-1 rounded">
+        <button onClick={() => handleAddToCart({product: product, quantity: quantity})} className="bg-primary-500 text-white px-2 py-1 rounded">
           <ShoppingCartIcon className="w-6 h-6" />
         </button>
       </div>

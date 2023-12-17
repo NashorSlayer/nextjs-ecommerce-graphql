@@ -1,9 +1,12 @@
 "use client";
 import Link from 'next/link';
+import { useAppSelector } from '@/redux/hooks';
 // @ts-ignore
 import { SearchIcon, MenuIcon, ShoppingCartIcon, LocationMarkerIcon } from '@heroicons/react/solid';
 
 const HeaderGuest = () => {
+    const cartItems = useAppSelector((state) => state.cart.products);
+
     return (
         <header className="bg-gray-800">
             <div className="container mx-auto flex items-center justify-between p-4">
@@ -42,7 +45,14 @@ const HeaderGuest = () => {
                     <Link href="/register" className="text-white hover:underline">Registrarse</Link>
                 </div>
                 <Link href="/cart">
-                    <ShoppingCartIcon className="w-8 h-8 ml-4 text-gray-300" />
+                    <div className="relative">
+                        <ShoppingCartIcon className="w-8 h-8 ml-4 text-gray-300" />
+                        {cartItems.length > 0 && (
+                        <span className="absolute -top-1 -right-7 bg-red-500 text-white px-2 py-1 rounded-full">
+                            {cartItems.length}
+                        </span>
+                        )}
+                    </div>
                 </Link>
             </div>
         </header>
