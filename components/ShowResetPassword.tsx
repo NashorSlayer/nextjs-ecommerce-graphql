@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import { register } from '../graphql/mutation';
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { HomeIcon } from '@heroicons/react/solid';
 
 const ShowResetPassword = () => {
 
@@ -66,7 +67,7 @@ const ShowResetPassword = () => {
     };
 
     return (
-        <section className="bg-gray-50 dark:bg-gray-900">
+        <section>
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                 <a href="/" className="flex items-center mb-3 text-2xl font-semibold text-gray-900 dark:text-white">
                     <img className="w-40 h-40" src="multifruts_logo.png" alt="logo" />
@@ -182,6 +183,7 @@ const ShowResetPassword = () => {
                         <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                             <Link href="/login" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Volver al inicio de sesión</Link>
                         </p>
+                        <p className="flex items-center justify-center text-sm font-light text-gray-300 dark:text-gray-200"><Link href="/" className="font-medium text-primary-600 hover:underline dark:text-primary-500"><HomeIcon className="w-6 h-6 ml-4 text-gray-300"/></Link></p>
                     </div>
                 </div>
             </div>

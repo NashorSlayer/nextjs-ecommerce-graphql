@@ -60,7 +60,7 @@ const ShowHome = () => {
         </aside>
   
         <main className="flex-1 p-6">
-          <p className="text-2xl font-semibold text-white flex items-center justify-center">Aquí van los productos :D</p>
+          {/* <p className="text-2xl font-semibold text-white flex items-center justify-center">Aquí van los productos :D</p> */}
         </main>
   
         <aside className="w-1/5 h-1/2 bg-gray-700 p-5 rounded shadow-md mt-auto mb-auto text-sm mr-3">

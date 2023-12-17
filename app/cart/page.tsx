@@ -5,7 +5,7 @@ import ShowCart from '@/components/ShowCart';
 export default function Home() {
   return (
     <div className='mb-4'>
-      <HeaderRegistered></HeaderRegistered><ShowCart></ShowCart>
+      <HeaderGuest></HeaderGuest><ShowCart></ShowCart>
     </div>
   );
 }

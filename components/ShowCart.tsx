@@ -24,7 +24,7 @@ const ShowCart = () => {
     };
   
     return (
-        <section className="bg-gray-50 dark:bg-gray-900">
+        <section>
           <div className="flex items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <div className="grid grid-cols-[3fr,1fr] gap-8 w-full max-w-screen-xl">
               <div className="bg-white rounded-lg shadow dark:border dark:bg-gray-800 dark:border-gray-700">
