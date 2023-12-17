@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ShoppingCartIcon from '@heroicons/react/outline/ShoppingCartIcon';
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { AddToCart, SetTotal } from "@/redux/cartSlice";
@@ -31,10 +31,17 @@ const ProductCard: React.FC<{product: Product}> = ({ product }) => {
       alert("Debes seleccionar una cantidad mayor a 0");
       return;
     } else {
+      alert("Producto agregado al carrito");
       dispatch(AddToCart(productProp));
       dispatch(SetTotal());
+      setQuantity(0);
     }
   };
+  
+  useEffect(() => {
+    setQuantity(0);
+  }, [product]);
+
   return (
     <div className="bg-gray-600 flex items-center justify-between mb-2 border p-4" style={{borderColor: "#9acd1b", borderWidth: 1, borderRadius: 20}}>
       <div className="flex flex-col items-center">
