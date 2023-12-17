@@ -141,7 +141,7 @@ const ShowHome = () => {
               <button
                 key={index}
                 className={`mx-1 px-3 py-1 rounded ${
-                  currentPage === index + 1 ? 'bg-primary-500 text-white' : 'bg-gray-300 text-black'
+                  currentPage === index + 1 ?  'bg-gray-300 text-black':'bg-primary-500 text-white'
                 }`}
                 onClick={() => paginate(index + 1)}
               >
