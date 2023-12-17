@@ -10,9 +10,6 @@ const HeaderGuest = () => {
                 <Link href="/">
                     <img className="w-12 h-12" src="multifruts_logo.png" alt="Logo" />
                 </Link>
-                <button>
-                    <MenuIcon className='ml-3 w-10 h-10 text-gray-300' /> 
-                </button>
                 <div className="flex-grow ml-4">
                 <input
                     id="search"
