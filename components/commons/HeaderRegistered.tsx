@@ -42,8 +42,8 @@ const HeaderRegistered = () => {
                     </Link>
                 </div>
                 <Link href="/cart">
-                        <ShoppingCartIcon className="w-8 h-8 ml-4 text-gray-300" />
-                    </Link>
+                    <ShoppingCartIcon className="w-8 h-8 ml-4 text-gray-300" />
+                </Link>
             </div>
         </header>
     );

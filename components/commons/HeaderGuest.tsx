@@ -44,9 +44,9 @@ const HeaderGuest = () => {
                     <Link href="/login" className="text-white hover:underline">Iniciar sesión</Link>
                     <Link href="/register" className="text-white hover:underline">Registrarse</Link>
                 </div>
-                <button>
-                    <ShoppingCartIcon className="w-8 h-8 ml-6 text-gray-300" />
-                </button>
+                <Link href="/cart">
+                    <ShoppingCartIcon className="w-8 h-8 ml-4 text-gray-300" />
+                </Link>
             </div>
         </header>
     );
