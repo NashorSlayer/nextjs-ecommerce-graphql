@@ -13,10 +13,12 @@
     "@apollo/experimental-nextjs-app-support": "^0.5.1",
     "@clerk/nextjs": "^4.26.2",
     "@heroicons/react": "^1.0.6",
+    "@reduxjs/toolkit": "^2.0.1",
     "graphql": "^16.8.1",
     "next": "14.0.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-redux": "^9.0.4"
   },
   "devDependencies": {
     "@types/node": "^20",
