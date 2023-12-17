@@ -19,23 +19,24 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
         <span className="font-semibold">{product.name}</span>
       </div>
       <div className="flex flex-col items-center">
-        <p className="font-semibold">Categoría:</p>
+        <p className="font-bold text-gray-400">Categoría</p>
         <p>{product.category}</p>
       </div>
       <div className="flex flex-col items-center">
-        <p className="font-semibold">Precio:</p>
-        <p>{product.price}</p>
+        <p className="font-bold text-gray-400">Precio</p>
+        <p>${product.price}</p>
       </div>
       <div className="flex flex-col items-center">
-        <p className="font-semibold">Stock:</p>
+        <p className="font-bold text-gray-400">Stock</p>
         <p>{product.stock}</p>
       </div>
-      <div className="flex flex-col items-center">
-        <label htmlFor={`quantity-${product.id}`}>Cantidad:</label>
+      <div className="flex flex-col items-center font-bold text-gray-400">
+        <label htmlFor={`quantity-${product.id}`}>Cantidad</label>
         <input
           type="number"
           id={`quantity-${product.id}`}
-          className="w-12 p-2 border border-gray-300 rounded dark:text-black"
+          className="w-13 p-1 border border-gray-300 rounded dark:text-black text-center"
+          style={{borderRadius: 20}}
           placeholder='0'
           min="0"
           max={product.stock}
