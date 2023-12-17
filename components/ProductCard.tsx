@@ -31,7 +31,6 @@ const ProductCard: React.FC<{product: Product}> = ({ product }) => {
       alert("Debes seleccionar una cantidad mayor a 0");
       return;
     } else {
-      alert("Producto agregado al carrito");
       dispatch(AddToCart(productProp));
       dispatch(SetTotal());
     }
