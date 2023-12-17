@@ -1,4 +1,5 @@
 "use client";
+import { ExclamationIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
 import React, { useState } from 'react';
 
@@ -29,13 +30,14 @@ const ShowCart = () => {
           <div className="grid grid-cols-[3fr,1fr] gap-8 w-full max-w-screen-xl">
               <div className="bg-white rounded-lg shadow dark:border dark:bg-gray-800 dark:border-gray-700">
                 <div className="p-4 space-y-3">
-                <h2 className="text-lg font-bold text-gray-900 dark:text-white">
+                <h2 className="flex items-center justify-center text-lg font-bold text-gray-900 dark:text-white">
                 Productos en el Carrito
                 </h2>
                 {cart.length === 0 ? (
+                    <><p className="text-gray-400 flex items-center justify-center"><ExclamationIcon className="w-20 h-20 mt-6" /></p>
                     <p className="flex items-center justify-center text-sm font-light text-gray-500 dark:text-gray-400">
                     No tienes productos en el carrito. <Link href="/" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Volver a la página de inicio</Link>
-                    </p>
+                    </p></>
                 ) : (
                   <table className="min-w-full table-auto divide-y divide-gray-200">
                     <thead className="bg-gray-50 dark:bg-gray-800">
