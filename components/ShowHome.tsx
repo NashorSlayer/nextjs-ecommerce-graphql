@@ -1,5 +1,5 @@
 "use client";
-import { FilterIcon, RefreshIcon } from "@heroicons/react/solid";
+import { FilterIcon, RefreshIcon, ExclamationIcon } from "@heroicons/react/solid";
 import ProductCard from './ProductCard';
 import { useState } from "react";
 
@@ -20,7 +20,7 @@ const products: Product[] = [
     name: 'Producto 1',
     category: 'Categoría 1',
     stock: 10,
-    price: 19.99,
+    price: 10000,
     image: 'no-image.jpg',
     description: 'Descripción del producto 1',
   },
@@ -29,16 +29,16 @@ const products: Product[] = [
     name: 'Producto 2',
     category: 'Categoría 2',
     stock: 20,
-    price: 29.99,
+    price: 20000,
     image: 'no-image.jpg',
     description: 'Descripción del producto 2',
   },
   {
     id: 3,
     name: 'Producto 3',
-    category: 'Categoría 1',
-    stock: 13,
-    price: 9.99,
+    category: 'Categoría 3',
+    stock: 30,
+    price: 30000,
     image: 'no-image.jpg',
     description: 'Descripción del producto 3',
   },
@@ -46,19 +46,28 @@ const products: Product[] = [
     id: 4,
     name: 'Producto 4',
     category: 'Categoría 4',
-    stock: 5,
-    price: 19.99,
+    stock: 40,
+    price: 40000,
     image: 'no-image.jpg',
     description: 'Descripción del producto 4',
   },
   {
     id: 5,
     name: 'Producto 5',
-    category: 'Categoría 3',
-    stock: 8,
-    price: 14.99,
+    category: 'Categoría 5',
+    stock: 50,
+    price: 50000,
     image: 'no-image.jpg',
     description: 'Descripción del producto 5',
+  },
+  {
+    id: 6,
+    name: 'Producto 6',
+    category: 'Categoría 6',
+    stock: 60,
+    price: 60000,
+    image: 'no-image.jpg',
+    description: 'Descripción del producto 6',
   },
 ];  
 
@@ -130,18 +139,25 @@ const ShowHome = () => {
         </aside>
   
         <main className="flex-1 p-6 bg-gray-700 p-5 rounded shadow-md mt-auto mb-auto text-sm ml-12 mr-12" style={{borderRadius: 20}}>
-          <div className="grid gap-1">
-            {currentProducts.map((product, index) => (
-              <ProductCard key={index} product={product} />
-            ))}
-          </div>
+          {currentProducts.length > 0 ? (
+            <div className="grid gap-1">
+              {currentProducts.map((product, index) => (
+                <ProductCard key={index} product={product} />
+              ))}
+            </div>
+          ) : (
+            <>
+              <p className="text-gray-400 flex items-center justify-center"><ExclamationIcon className="w-20 h-20" /></p>
+              <p className="text-gray-400 flex items-center justify-center text-white font-semibold">No hay productos disponibles con esta configuración. Intenta ajustar los parámetros.</p>
+            </>
+          )}
 
           <div className="mt-4 flex justify-center">
             {Array.from({ length: Math.ceil(products.length / productsPerPage) }).map((_, index) => (
               <button
                 key={index}
                 className={`mx-1 px-3 py-1 rounded ${
-                  currentPage === index + 1 ?  'bg-gray-300 text-black':'bg-primary-500 text-white'
+                  currentPage === index + 1 ? 'bg-gray-300 text-black' : 'bg-primary-500 text-white'
                 }`}
                 onClick={() => paginate(index + 1)}
               >
