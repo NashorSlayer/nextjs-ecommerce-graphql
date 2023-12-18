@@ -36,9 +36,9 @@ const ShowShoppingHistory = () => {
   return (
     <section>
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <div className="w-auto max-w-full bg-white rounded-lg shadow dark:border md:mt-0 xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-          <div className="p-4 space-y-3 md:space-y-4 sm:p-6">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+        <div className="w-auto max-w-full shadow md:mt-0 xl:p-0"style={{background: "#353734", borderColor: "#9acd1b", borderWidth: 3, borderRadius: 30}}>
+          <div className="p-4 m-4 space-y-6 md:space-y-6 sm:p-6">
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-white md:text-2xl">
               Historial de Compras
             </h1>
             <div className="overflow-x-auto">

@@ -33,7 +33,7 @@ const ShowCart = () => {
         <section>
           <div className="flex items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <div className="grid grid-cols-[3fr,1fr] gap-8 w-full max-w-screen-xl">
-              <div className="bg-white rounded-lg shadow dark:border dark:bg-gray-800 dark:border-gray-700">
+              <div className="bg-white rounded-lg shadow"style={{background: "#353734", borderColor: "#9acd1b", borderWidth: 5, borderRadius: 60}}>
                 <div className="p-4 space-y-3">
                 <h2 className="flex items-center justify-center text-lg font-bold text-gray-900 dark:text-white">
                 Productos en el Carrito
@@ -74,7 +74,7 @@ const ShowCart = () => {
                 </div>
               </div>
     
-              <div className="bg-white rounded-lg shadow dark:border dark:bg-gray-800 dark:border-gray-700">
+              <div className="bg-white rounded-lg shadow "style={{background: "#353734", borderColor: "#9acd1b", borderWidth: 5, borderRadius: 60}}>
                 <div className="p-10 space-y-10">
                   <h2 className="text-lg font-bold text-gray-900 dark:text-white">Resumen de Compra</h2>
                   <table className="min-w-full table-auto">
@@ -88,12 +88,13 @@ const ShowCart = () => {
                     <div className="flex items-center justify-center">
                     <button
                         disabled={cartItems.length === 0}
+                        style={{width: "80%", backgroundColor: "#9acd1b", borderRadius: 20}}
                         onClick={handlePayment}
                         className={`${
                           cartItems.length === 0
                             ? 'bg-gray-300 cursor-not-allowed'
                             : 'bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300'
-                        } text-white font-medium rounded-full text-sm px-5 py-3 text-center border-2 border-primary-600 rounded-md`}
+                        } text-white font-medium text-sm px-5 py-3 text-center border-2 border-primary-600`}
                         >
                         Realizar compra
                         </button>

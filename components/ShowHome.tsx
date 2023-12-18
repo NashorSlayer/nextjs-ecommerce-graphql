@@ -85,7 +85,7 @@ const ShowHome = () => {
 
     return (
       <section className="min-h-screen flex">
-        <aside className="w-1/5 h-1/2 bg-gray-700 p-5 rounded shadow-md mt-auto mb-auto text-sm ml-3" style={{borderRadius: 20}}>
+        <aside className="w-1/5 h-1/2 bg-gray-700 p-5 rounded shadow-md mt-auto mb-auto text-sm ml-3" style={{background: "#353734", borderColor: "#9acd1b", borderWidth: 5, borderRadius: 60}}>
           <h2 className="flex items-center justify-center text-white font-semibold mb-4">
             FILTRAR
             <FilterIcon className="w-8 h-8 ml-2 text-gray-300" />
@@ -135,12 +135,12 @@ const ShowHome = () => {
             <span className="text-white" style={{ lineHeight: '2.2' }}>-</span>
             <input type="number" id="maxPrice" placeholder="Max" className="bg-gray-300 w-1/2 p-2 ml-2 text-black rounded" min="0"/>
           </div>
-          <button className="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium rounded-full text-sm px-5 py-3 text-center border-2 border-primary-600 rounded-md">
+          <button className="w-full ml-6 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium text-sm px-5 py-3 text-center border-2 border-primary-600"style={{width: "80%", backgroundColor: "#9acd1b", borderRadius: 20}}>
             Aplicar filtros
           </button>
         </aside>
   
-        <main className="flex-1 p-6 bg-gray-700 p-5 rounded shadow-md mt-auto mb-auto text-sm ml-12 mr-12" style={{borderRadius: 20}}>
+        <main className="flex-1 p-6 bg-gray-700 rounded shadow-md mt-auto mb-auto text-sm ml-12 mr-12" style={{background: "#353734", borderColor: "#9acd1b", borderWidth: 5, borderRadius: 60}}>
           {currentProducts.length > 0 ? (
             <div className="grid gap-1">
               {currentProducts.map((product, index) => (
@@ -149,8 +149,8 @@ const ShowHome = () => {
             </div>
           ) : (
             <>
-              <p className="text-gray-400 flex items-center justify-center"><ExclamationIcon className="w-20 h-20" /></p>
-              <p className="text-gray-400 flex items-center justify-center text-white font-semibold">No hay productos disponibles con esta configuración. Intenta ajustar los parámetros.</p>
+              <p className="text-white flex items-center justify-center"><ExclamationIcon className="w-20 h-20" /></p>
+              <p className="flex items-center justify-center text-white font-semibold">No hay productos disponibles con esta configuración. Intenta ajustar los parámetros.</p>
             </>
           )}
 
@@ -158,6 +158,7 @@ const ShowHome = () => {
             {Array.from({ length: Math.ceil(products.length / productsPerPage) }).map((_, index) => (
               <button
                 key={index}
+                style={{background: "#353734", borderColor: "#9acd1b", borderWidth: 5, borderRadius: 60}}
                 className={`mx-1 px-3 py-1 rounded ${
                   currentPage === index + 1 ? 'bg-gray-300 text-black' : 'bg-primary-500 text-white'
                 }`}
@@ -169,7 +170,7 @@ const ShowHome = () => {
           </div>
         </main>
 
-        <aside className="w-1/5 h-1/2 bg-gray-700 p-5 rounded shadow-md mt-auto mb-auto text-sm mr-3" style={{borderRadius: 20}}>
+        <aside className="w-1/5 h-1/2 bg-gray-700 p-5 rounded shadow-md mt-auto mb-auto text-sm mr-3" style={{background: "#353734", borderColor: "#9acd1b", borderWidth: 5, borderRadius: 60}}>
           <h2 className="flex items-center justify-center text-white font-semibold mb-4">
             ORDENAR
             <RefreshIcon className="w-8 h-8 ml-2 text-gray-300" />
@@ -204,7 +205,7 @@ const ShowHome = () => {
             <option value="lowest_stock">Desde menor stock</option>
             <option value="highest_stock">Desde mayor stock</option>
           </select>
-          <button className="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium rounded-full text-sm px-5 py-3 text-center border-2 border-primary-600 rounded-md">
+          <button className="w-full ml-6 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium text-sm px-5 py-3 text-center border-2 border-primary-600"style={{width: "80%", backgroundColor: "#9acd1b", borderRadius: 20}}>
             Aplicar orden
           </button>
         </aside>

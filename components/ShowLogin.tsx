@@ -87,7 +87,7 @@ const ShowLogin = () => {
             
                             <button
                                 onClick={(event) => handleLogin(event)}
-                                className="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium rounded-full text-sm px-5 py-3 text-center border-2 border-primary-600 rounded-md">Iniciar sesión</button>
+                                className="w-full ml-10 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium text-sm px-5 py-3 text-center border-2 border-primary-600"style={{width: "80%", backgroundColor: "#9acd1b", borderRadius: 20}}>Iniciar sesión</button>
                             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                                 ¿Aún no tienes un cuenta? <Link href="register" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Regístrate</Link>
                             </p>

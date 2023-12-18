@@ -30,7 +30,7 @@ const ShowProfile = () => {
       return (
         <section>
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-            <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+            <div className="w-full shadow md:mt-0 sm:max-w-md xl:p-0"style={{background: "#353734", borderColor: "#9acd1b", borderWidth: 5, borderRadius: 60}}>
               <div className="p-4 space-y-3 md:space-y-4 sm:p-6">
                 <h1 className="flex items-center justify-center text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                   Información del perfil
@@ -61,16 +61,19 @@ const ShowProfile = () => {
                                     name="address"
                                     id="address"
                                     value={address}
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Dirección" required />
+                                    style={{background: "#9acd1b", borderRadius: 20}}
+                                    className="text-white w-full sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5 placeholder-white" 
+                                    placeholder="Dirección" 
+                                    required />
                             </div>
                 <button
                   onClick={handleUpdateProfile}
-                  className="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium rounded-full text-sm px-5 py-3 text-center border-2 border-primary-600 rounded-md">
+                  className="mt-4 ml-10 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium text-sm px-5 py-3 text-center border-2 border-primary-600" style={{width: "80%", backgroundColor: "#9acd1b", borderRadius: 20}}>
                   Actualizar Datos
                 </button>
                 <button
                   onClick={handleShoppingHistory}
-                  className="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium rounded-full text-sm px-5 py-3 text-center border-2 border-primary-600 rounded-md">
+                  className="mt-4 ml-10 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium text-sm px-5 py-3 text-center border-2 border-primary-600" style={{width: "80%", backgroundColor: "#9acd1b", borderRadius: 20}}>
                   Historial de Compras
                 </button>
               </div>

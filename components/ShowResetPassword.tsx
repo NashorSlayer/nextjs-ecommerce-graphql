@@ -93,7 +93,7 @@ const ShowResetPassword = () => {
                         </form>
                         <button
                             onClick={(event) => handleResetPassword(event)}
-                            className="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium rounded-full text-sm px-5 py-3 text-center border-2 border-primary-600 rounded-md">
+                            className="w-full ml-12 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium text-sm px-5 py-3 text-center border-2 border-primary-600"style={{width: "80%", backgroundColor: "#9acd1b", borderRadius: 20}}>
                                 Enviar código de verificación
                         </button>
                         {showPopup && !showChangePasswordPopup && (
@@ -128,7 +128,8 @@ const ShowResetPassword = () => {
                                     </div>
                                 <button
                                     onClick={(event) => handleVerifyCode(event)}
-                                    className="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium rounded-full text-sm px-5 py-3 text-center border-2 border-primary-600 rounded-md"
+                                    style={{width: "80%", backgroundColor: "#9acd1b", borderRadius: 20}}
+                                    className="w-full ml-9 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium text-sm px-5 py-3 text-center border-2 border-primary-600"
                                 >
                                     Verificar código
                                 </button>
