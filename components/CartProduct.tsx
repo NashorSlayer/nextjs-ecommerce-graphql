@@ -67,7 +67,7 @@ const CartProduct: React.FC<ProductCardProps> = ({ product, quantity }) => {
                 onChange={(e) => setDeleteQuantity(Number(e.target.value))}
                 />  
                 <button onClick={() => removeFromCart(product)}>    
-                    <TrashIcon className="w-8 h-8 text-gray-300"/>
+                    <TrashIcon className="w-6 h-6 text-gray-300"/>
                 </button>
             </td>
         </tr>
