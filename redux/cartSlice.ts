@@ -35,12 +35,20 @@ export const cartSlice = createSlice({
         DeleteFromCart: (state, action: PayloadAction<number>) => {
             state.products = state.products.filter((productProp: ProductCardProps) => productProp.product.id !== action.payload);
         },
+        SetQuantity: (state, action: PayloadAction<{id: number, quantity: number}>) => {
+            state.products = state.products.map((productProp: ProductCardProps) => {
+                if (productProp.product.id === action.payload.id) {
+                    productProp.quantity = productProp.quantity - action.payload.quantity;
+                }
+                return productProp;
+            });
+        },
         SetTotal: (state) => {
             state.total = state.products.reduce((total: number, productProp: ProductCardProps) => total + productProp.product.price * productProp.quantity, 0);
         }
     },
 });
 
-export const { AddToCart, DeleteFromCart, SetTotal } = cartSlice.actions;
+export const { AddToCart, DeleteFromCart, SetQuantity, SetTotal } = cartSlice.actions;
 export const selectCart = (state: RootState) => state.cart.products;
 export default cartSlice.reducer;

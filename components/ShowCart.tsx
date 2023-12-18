@@ -1,24 +1,33 @@
 "use client";
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { ExclamationIcon } from '@heroicons/react/solid';
+import { ExclamationIcon, TrashIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { SetTotal, DeleteFromCart} from '@/redux/cartSlice';
+import CartProduct from './CartProduct';
+// import { REALIZAR_PAGO_MUTATION } from "@/graphql/mutations";
 
 const ShowCart = () => {
   const cartItems = useAppSelector((state) => state.cart.products);
   const cartTotal = useAppSelector((state) => state.cart.total);
   const dispatch = useAppDispatch();
+  const [deleteQuantity, setDeleteQuantity] = useState<number>(0);
   
-    const [total, setTotal] = useState(cartTotal);
-  
-    const removeFromCart = (id: number) => {
-      const product = cartItems.find((item) => item.product.id === id);
-      const newTotal = total - ((product?.product?.price || 0) * (product?.quantity || 0));
-      setTotal(newTotal);
-      dispatch(DeleteFromCart(id));
-      dispatch(SetTotal());
-    };
+  const [total, setTotal] = useState(cartTotal);
+
+  // const [realizarPago] = useMutation(REALIZAR_PAGO_MUTATION);
+
+  const handlePayment = async () => {
+    // try {
+    //   const { data } = await realizarPago({
+    //     variables: {
+    //     },
+    //   });
+
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  };
   
     return (
         <section>
@@ -56,16 +65,8 @@ const ShowCart = () => {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-                      {cartItems.map(( productProp ) => (
-                        <tr key={productProp.product.id}>
-                          <td className="px-6 py-4 whitespace-nowrap">{productProp.product.name}</td>
-                          <td className="px-6 py-4 whitespace-nowrap">${productProp.product.price}</td>
-                          <td className="px-6 py-4 whitespace-nowrap">{productProp.quantity}</td>
-                          <td className="px-6 py-4 whitespace-nowrap">${(productProp.product.price * productProp.quantity)}</td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <button onClick={() => removeFromCart(productProp.product.id)}>Eliminar</button>
-                          </td>
-                        </tr>
+                      {cartItems.map(( productProp, index ) => (
+                        <CartProduct key={index} product={productProp.product} quantity={productProp.quantity} />
                       ))}
                     </tbody>
                   </table>
@@ -87,6 +88,7 @@ const ShowCart = () => {
                     <div className="flex items-center justify-center">
                     <button
                         disabled={cartItems.length === 0}
+                        onClick={handlePayment}
                         className={`${
                           cartItems.length === 0
                             ? 'bg-gray-300 cursor-not-allowed'
