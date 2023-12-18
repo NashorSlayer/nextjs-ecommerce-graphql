@@ -2,7 +2,7 @@
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { ExclamationIcon, TrashIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SetTotal, DeleteFromCart} from '@/redux/cartSlice';
 import CartProduct from './CartProduct';
 // import { REALIZAR_PAGO_MUTATION } from "@/graphql/mutations";
@@ -28,6 +28,10 @@ const ShowCart = () => {
     //   console.log(error);
     // }
   };
+
+  useEffect(() => {
+    setTotal(cartTotal);
+  }, [cartTotal]);
   
     return (
         <section>
@@ -47,19 +51,19 @@ const ShowCart = () => {
                   <table className="min-w-full table-auto divide-y divide-gray-200">
                     <thead className="bg-gray-50 dark:bg-gray-800">
                       <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" style={{background: "#353734"}}>
                           Producto
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" style={{background: "#353734"}}>
                           Precio
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" style={{background: "#353734"}}>
                           Cantidad
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" style={{background: "#353734"}}>
                           Total
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" style={{background: "#353734"}}>
                           Acciones
                         </th>
                       </tr>

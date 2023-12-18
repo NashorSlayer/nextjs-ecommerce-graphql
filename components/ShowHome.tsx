@@ -169,46 +169,6 @@ const ShowHome = () => {
             ))}
           </div>
         </main>
-
-        <aside className="w-1/5 h-1/2 bg-gray-700 p-5 rounded shadow-md mt-auto mb-auto text-sm mr-3" style={{background: "#353734", borderColor: "#9acd1b", borderWidth: 5, borderRadius: 60}}>
-          <h2 className="flex items-center justify-center text-white font-semibold mb-4">
-            ORDENAR
-            <RefreshIcon className="w-8 h-8 ml-2 text-gray-300" />
-          </h2>
-          <label className="text-white" htmlFor="products">Productos:</label>
-          <select id="products" className="bg-gray-300 w-full p-2 mb-4 rounded text-black">
-            <option value="popular">Populares</option>
-            <option value="newest">Nuevos</option>
-            <option value="orderless">Sin ordenar</option>
-          </select>
-          <label className="text-white" htmlFor="price">Precio:</label>
-          <select id="price" className="bg-gray-300 w-full p-2 mb-4 rounded text-black">
-            <option value="orderless">Sin ordenar</option>
-            <option value="lowest_price">Desde el más barato</option>
-            <option value="highest_price">Desde el más caro</option>
-          </select>
-          <label className="text-white" htmlFor="name">Nombre:</label>
-          <select id="name" autoComplete="name" className="bg-gray-300 w-full p-2 mb-4 rounded text-black">
-            <option value="orderless">Sin ordenar</option>
-            <option value="A-Z_name">De la A a la Z</option>
-            <option value="Z-A_name">De la Z a la A</option>
-          </select>
-          <label className="text-white" htmlFor="category">Categoría:</label>
-          <select id="category" className="bg-gray-300 w-full p-2 mb-4 rounded text-black">
-            <option value="orderless">Sin ordenar</option>
-            <option value="A-Z_category">De la A a la Z</option>
-            <option value="Z-A_category">De la Z a la A</option>
-          </select>
-          <label className="text-white" htmlFor="stock">Stock:</label>
-          <select id="stock" className="bg-gray-300 w-full p-2 mb-4 rounded text-black">
-            <option value="orderless">Sin ordenar</option>
-            <option value="lowest_stock">Desde menor stock</option>
-            <option value="highest_stock">Desde mayor stock</option>
-          </select>
-          <button className="w-full ml-6 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium text-sm px-5 py-3 text-center border-2 border-primary-600"style={{width: "80%", backgroundColor: "#9acd1b", borderRadius: 20}}>
-            Aplicar orden
-          </button>
-        </aside>
       </section>
     );
   };
