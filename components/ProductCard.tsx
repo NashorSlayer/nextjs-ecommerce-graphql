@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import ShoppingCartIcon from '@heroicons/react/outline/ShoppingCartIcon';
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { AddToCart, SetTotal } from "@/redux/cartSlice";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { AddToCart, SetTotal } from "../redux/cartSlice";
 import ProductDetailsPopup from './ProductDetailsPopup';
-import { ProductState } from '@/redux/productSlice';
-import { ProductCardProps } from '@/redux/cartSlice';
+import { ProductState } from '../redux/productSlice';
+import { ProductCardProps } from '../redux/cartSlice';
 
 const ProductCard: React.FC<{product: ProductState}> = ({ product }) => {
   const cartItems = useAppSelector((state) => state.cart.products);

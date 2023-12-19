@@ -1,9 +1,9 @@
-import { DeleteFromCart, SetQuantity, SetTotal } from "@/redux/cartSlice";
-import { useAppDispatch } from "@/redux/hooks";
+import { DeleteFromCart, SetQuantity, SetTotal } from "../redux/cartSlice";
+import { useAppDispatch } from "../redux/hooks";
 import { TrashIcon } from "@heroicons/react/solid";
 import { useState, useEffect } from "react";
-import { ProductState } from "@/redux/productSlice";
-import { ProductCardProps } from "@/redux/cartSlice";
+import { ProductState } from "../redux/productSlice";
+import { ProductCardProps } from "../redux/cartSlice";
 import React from "react";
 
 const CartProduct: React.FC<ProductCardProps> = ({ product, quantity }) => {

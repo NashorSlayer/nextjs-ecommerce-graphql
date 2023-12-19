@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProductState } from '@/redux/productSlice';
+import { ProductState } from '../redux/productSlice';
 
 interface ProductDetailsPopupProps {
     product: ProductState;

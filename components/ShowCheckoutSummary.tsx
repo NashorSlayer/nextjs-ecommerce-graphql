@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { useAppSelector } from '@/redux/hooks';
+import { useAppSelector } from '../redux/hooks';
 import CartCheckout from './CartCheckout';
 // import { REALIZAR_PAGO_MUTATION } from "@/graphql/mutations";
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import { useAppSelector } from '@/redux/hooks';
-import { selectCart } from '@/redux/cartSlice';
+import { useAppSelector } from '../redux/hooks';
+import { selectCart } from '../redux/cartSlice';
 import Link from 'next/link';
 import { ExclamationIcon } from '@heroicons/react/solid';
 
