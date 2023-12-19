@@ -22,7 +22,7 @@ const HeaderGuest = () => {
         <header className="bg-gray-800">
             <div className="container mx-auto flex items-center justify-between p-4">
                 <Link href="/">
-                    <img className="w-12 h-12" src="multifruts_logo.png" alt="Logo" />
+                    <img className="w-12 h-12" src="../multifruts_logo.png" alt="Logo" />
                 </Link>
                 <div className="flex items-center flex-col">
                     <div className="flex items-center">

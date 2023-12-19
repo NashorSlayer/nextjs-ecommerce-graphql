@@ -4,7 +4,7 @@ import { ExclamationIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import CartProduct from './CartProduct';
-// import { REALIZAR_PAGO_MUTATION } from "@/graphql/mutations";
+import { useRouter } from 'next/navigation'
 
 const ShowCart = () => {
   const cartItems = useAppSelector((state) => state.cart.products);
@@ -13,19 +13,10 @@ const ShowCart = () => {
   const [deleteQuantity, setDeleteQuantity] = useState<number>(0);
   
   const [total, setTotal] = useState(cartTotal);
+  const router = useRouter()
 
-  // const [realizarPago] = useMutation(REALIZAR_PAGO_MUTATION);
-
-  const handlePayment = async () => {
-    // try {
-    //   const { data } = await realizarPago({
-    //     variables: {
-    //     },
-    //   });
-
-    // } catch (error) {
-    //   console.log(error);
-    // }
+  const handleCheckout = async () => {
+    router.push('/cart/checkout')
   };
 
   useEffect(() => {
@@ -92,14 +83,14 @@ const ShowCart = () => {
                     <button
                         disabled={cartItems.length === 0}
                         style={{width: "80%", backgroundColor: "#9acd1b", borderRadius: 20}}
-                        onClick={handlePayment}
+                        onClick={handleCheckout}
                         className={`${
                           cartItems.length === 0
                             ? 'bg-gray-300 cursor-not-allowed'
                             : 'bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300'
                         } text-white font-medium text-sm px-5 py-3 text-center border-2 border-primary-600`}
                         >
-                        Realizar compra
+                        Siguiente
                         </button>
                     </div>
                 </div>
