@@ -1,7 +1,7 @@
 "use client";
 import Link from 'next/link';
 // @ts-ignore
-import { SearchIcon, MenuIcon, ShoppingCartIcon, LocationMarkerIcon, UserCircleIcon } from '@heroicons/react/solid';
+import { LocationMarkerIcon, UserCircleIcon } from '@heroicons/react/solid';
 
 const HeaderAdmin = () => {
     return (

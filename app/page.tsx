@@ -3,9 +3,12 @@ import HeaderRegistered from '@/components/commons/HeaderRegistered';
 import ShowHome from '@/components/ShowHome';
 
 export default function Home() {
+  const isUserAuthenticated = false; //Implementar método para ver si el usuario está autenticado o no
+
   return (
     <div className='mb-4'>
-      <HeaderGuest></HeaderGuest><ShowHome></ShowHome>
+      {isUserAuthenticated ? <HeaderRegistered /> : <HeaderGuest />}
+      <ShowHome />
     </div>
   );
 }

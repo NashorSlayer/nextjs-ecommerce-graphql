@@ -1,7 +1,7 @@
 "use client";
 import { FilterIcon, RefreshIcon, ExclamationIcon } from "@heroicons/react/solid";
 import ProductCard from './ProductCard';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface Product {
   id: number;

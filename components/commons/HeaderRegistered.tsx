@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { useAppSelector } from '@/redux/hooks';
 // @ts-ignore
-import { SearchIcon, MenuIcon, ShoppingCartIcon, LocationMarkerIcon, UserCircleIcon } from '@heroicons/react/solid';
+import { ShoppingCartIcon, LocationMarkerIcon, UserCircleIcon } from '@heroicons/react/solid';
 import { useState } from 'react';
 import CartDetailsPopup from '../CartDetailsPopup';
 
@@ -24,16 +24,6 @@ const HeaderRegistered = () => {
                 <Link href="/">
                     <img className="w-12 h-12" src="../multifruts_logo.png" alt="Logo" />
                 </Link>
-                <div className="flex-grow ml-4">
-                <input
-                    type="text"
-                    placeholder="Buscar productos"
-                    className="w-full px-4 py-2 border border-gray-600 rounded-lg focus:outline-none focus:border-primary-500 text-gray-900"
-                    />
-                </div>
-                <button>
-                    <SearchIcon className="w-8 h-8 ml-2 text-gray-300" />
-                </button>
                 <div className="flex items-center flex-col">
                     <div className="flex items-center">
                         <LocationMarkerIcon className="w-8 h-8 ml-4 text-gray-300" />
@@ -51,7 +41,6 @@ const HeaderRegistered = () => {
                     <Link href="/profile">
                         <UserCircleIcon className="w-8 h-8 ml-4 text-gray-300" />
                     </Link>
-                </div>
                     <div className="relative" onClick={toggleCartDetails}>
                         <ShoppingCartIcon className="w-8 h-8 ml-4 text-gray-300" />
                         {cartItems.length > 0 && (
@@ -60,6 +49,7 @@ const HeaderRegistered = () => {
                         </span>
                         )}
                     </div>
+                </div>
                 {showCartDetails && <CartDetailsPopup onClose={toggleCartDetails} />}
             </div>
         </header>
