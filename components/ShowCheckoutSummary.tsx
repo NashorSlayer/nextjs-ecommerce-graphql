@@ -44,7 +44,6 @@ const CheckoutSummary = () => {
     <section>
       <div className="flex items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <div className="grid grid-cols-[3fr,1fr] gap-8 w-full max-w-screen-xl">
-          {/* Sección de productos en el carrito */}
           <div className="bg-white rounded-lg shadow" style={{ background: "#353734", borderColor: "#9acd1b", borderWidth: 5, borderRadius: 60 }}>
             <div className="p-4 space-y-3">
               <h2 className="flex items-center justify-center text-lg font-bold text-gray-900 dark:text-white">
@@ -53,7 +52,6 @@ const CheckoutSummary = () => {
               {cartItems.length === 0 ? (
                 <>
                   <p className="text-gray-400 flex items-center justify-center">
-                    {/* Icono de advertencia u otro */}
                   </p>
                   <p className="flex items-center justify-center text-sm font-light text-gray-500 dark:text-gray-400">
                     No tienes productos en el carrito.
@@ -84,10 +82,8 @@ const CheckoutSummary = () => {
             </div>
           </div>
 
-          {/* Sección de resumen de compra y tipo de envío */}
           <div className="bg-white rounded-lg shadow" style={{ background: "#353734", borderColor: "#9acd1b", borderWidth: 5, borderRadius: 60 }}>
             <div className="p-10 space-y-10">
-              {/* Resumen de compra */}
               <h2 className="text-lg font-bold text-gray-900 dark:text-white">Resumen de Compra</h2>
               <table className="min-w-full table-auto">
                 <tbody>
@@ -98,7 +94,6 @@ const CheckoutSummary = () => {
                 </tbody>
               </table>
 
-              {/* Tipo de envío y dirección (si es a domicilio) */}
               <div className="flex items-center justify-center space-x-4">
                 <div>
                   <input
@@ -126,7 +121,6 @@ const CheckoutSummary = () => {
                 </div>
               </div>
 
-              {/* Campo de entrada para la dirección (visible solo si es a domicilio) */}
               {shippingAddress && (
                 <div className="mt-4">
                   <label htmlFor="direccion" className="block text-sm font-medium text-gray-300">
@@ -171,7 +165,6 @@ const CheckoutSummary = () => {
                     />
                 </div>
                 )}
-              {/* Botón para realizar la compra */}
               <div className="flex items-center justify-center">
                 <button
                   disabled={cartItems.length === 0}

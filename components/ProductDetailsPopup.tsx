@@ -1,17 +1,8 @@
 import React from 'react';
-
-interface Product {
-    id: number;
-    name: string;
-    category: string;
-    stock: number;
-    price: number;
-    image: string;
-    description: string;
-};
+import { ProductState } from '@/redux/productSlice';
 
 interface ProductDetailsPopupProps {
-    product: Product;
+    product: ProductState;
     onClose: () => void;
 }
 

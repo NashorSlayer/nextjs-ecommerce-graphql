@@ -1,5 +1,5 @@
 "use client";
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { useAppSelector } from '@/redux/hooks';
 import { ExclamationIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
@@ -9,8 +9,6 @@ import { useRouter } from 'next/navigation'
 const ShowCart = () => {
   const cartItems = useAppSelector((state) => state.cart.products);
   const cartTotal = useAppSelector((state) => state.cart.total);
-  const dispatch = useAppDispatch();
-  const [deleteQuantity, setDeleteQuantity] = useState<number>(0);
   
   const [total, setTotal] = useState(cartTotal);
   const router = useRouter()

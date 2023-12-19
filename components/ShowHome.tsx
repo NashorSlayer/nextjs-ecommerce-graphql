@@ -3,73 +3,117 @@ import { FilterIcon, RefreshIcon, ExclamationIcon } from "@heroicons/react/solid
 import ProductCard from './ProductCard';
 import { useState } from "react";
 
-interface Product {
-  id: number;
-  name: string;
-  category: string;
-  stock: number;
-  price: number;
-  image: string;
-  description: string;
-};
-
-const products: Product[] = [
-  // Hacer llamada al backend para obtener los productos
+const products = [
   {
-    id: 1,
-    name: 'Producto 1',
-    category: 'Mix',
-    stock: 10,
-    price: 10000,
-    image: 'no-image.jpg',
-    description: 'Descripción del producto 1',
-  },
-  {
-    id: 2,
-    name: 'Producto 2',
+    id: '1',
+    name: 'Almendras',
     category: 'A granel',
-    stock: 20,
-    price: 20000,
+    price: 100,
+    stock: 100,
     image: 'no-image.jpg',
-    description: 'Descripción del producto 2',
+    description: 'Almendras de California',
   },
   {
-    id: 3,
-    name: 'Producto 3',
-    category: 'Mix',
-    stock: 30,
-    price: 30000,
+    id: '2',
+    name: 'Amaranto',
+    category: 'A granel',
+    price: 100,
+    stock: 100,
     image: 'no-image.jpg',
-    description: 'Descripción del producto 3',
+    description: 'Amaranto de la India',
   },
   {
-    id: 4,
-    name: 'Producto 4',
-    category: 'Harina',
-    stock: 40,
-    price: 40000,
+    id: '3',
+    name: 'Arroz integral',
+    category: 'A granel',
+    price: 100,
+    stock: 100,
     image: 'no-image.jpg',
-    description: 'Descripción del producto 4',
+    description: 'Arroz integral de la India',
   },
   {
-    id: 5,
-    name: 'Producto 5',
-    category: 'Otros',
+    id: '4',
+    name: 'Arroz rojo',
+    category: 'A granel',
+    price: 100,
+    stock: 100,
+    image: 'no-image.jpg',
+    description: 'Arroz rojo de la India',
+  },
+  {
+    id: '5',
+    name: 'Arroz salvaje',
+    category: 'A granel',
+    price: 100,
+    stock: 100,
+    image: 'no-image.jpg',
+    description: 'Arroz salvaje de la India',
+  },
+  {
+    id: '6',
+    name: 'Cacahuate',
+    category: 'A granel',
+    price: 100,
+    stock: 100,
+    image: 'no-image.jpg',
+    description: 'Cacahuate de la India',
+  },
+  {
+    id: '7',
+    name: 'Cacao',
+    category: 'A granel',
+    price: 100,
+    stock: 100,
+    image: 'no-image.jpg',
+    description: 'Cacao de la India',
+  },
+  {
+    id: '8',
+    name: 'Café',
+    category: 'A granel',
+    price: 100,
+    stock: 100,
+    image: 'no-image.jpg',
+    description: 'Café de la India',
+  },
+  {
+    id: '9',
+    name: 'Canela',
+    category: 'A granel',
+    price: 100,
+    stock: 100,
+    image: 'no-image.jpg',
+    description: 'Canela de la India',
+  },
+  {
+    id: '10',
+    name: 'Chía',
+    category: 'A granel',
+    price: 100,
+    stock: 100,
+    image: 'no-image.jpg',
+    description: 'Chía de la India',
+  },
+  {
+    id: '11',
+    name: 'Coco',
+    category: 'A granel',
+    price: 100,
     stock: 0,
-    price: 50000,
     image: 'no-image.jpg',
-    description: 'Descripción del producto 5',
+    description: 'Coco de la India',
   },
   {
-    id: 6,
-    name: 'Producto 6',
-    category: 'Mix',
-    stock: 60,
-    price: 60000,
+    id: '12',
+    name: 'Cúrcuma',
+    category: 'A granel',
+    price: 100,
+    stock: 100,
     image: 'no-image.jpg',
-    description: 'Descripción del producto 6',
+    description: 'Cúrcuma de la India',
   },
-];  
+];
+  
 
 const ShowHome = () => {
   const productsPerPage = 4;

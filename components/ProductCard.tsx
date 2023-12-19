@@ -3,23 +3,10 @@ import ShoppingCartIcon from '@heroicons/react/outline/ShoppingCartIcon';
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { AddToCart, SetTotal } from "@/redux/cartSlice";
 import ProductDetailsPopup from './ProductDetailsPopup';
+import { ProductState } from '@/redux/productSlice';
+import { ProductCardProps } from '@/redux/cartSlice';
 
-interface Product {
-    id: number;
-    name: string;
-    category: string;
-    stock: number;
-    price: number;
-    image: string;
-    description: string;
-};
-
-interface ProductCardProps {
-  product: Product;
-  quantity: number;
-}
-
-const ProductCard: React.FC<{product: Product}> = ({ product }) => {
+const ProductCard: React.FC<{product: ProductState}> = ({ product }) => {
   const cartItems = useAppSelector((state) => state.cart.products);
   const dispatch = useAppDispatch();
   const [quantity, setQuantity] = useState<number>(0);

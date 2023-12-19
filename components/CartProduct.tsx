@@ -2,26 +2,14 @@ import { DeleteFromCart, SetQuantity, SetTotal } from "@/redux/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { TrashIcon } from "@heroicons/react/solid";
 import { useState, useEffect } from "react";
-
-interface Product {
-    id: number;
-    name: string;
-    category: string;
-    price: number;
-    image: string;
-    description: string;
-};
-
-interface ProductCardProps {
-  product: Product;
-  quantity: number;
-}
+import { ProductState } from "@/redux/productSlice";
+import { ProductCardProps } from "@/redux/cartSlice";
 
 const CartProduct: React.FC<ProductCardProps> = ({ product, quantity }) => {
     const [deleteQuantity, setDeleteQuantity] = useState<number>(0);
     const dispatch = useAppDispatch();
     
-    const removeFromCart = (product: Product) => {
+    const removeFromCart = (product: ProductState) => {
         console.log(deleteQuantity)
         if (deleteQuantity === 0) {
         alert("Debes seleccionar una cantidad mayor a 0");

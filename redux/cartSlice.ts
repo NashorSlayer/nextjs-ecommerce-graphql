@@ -1,17 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from './store';
-
-export interface Product {
-    id: number;
-    name: string;
-    category: string;
-    price: number;
-    image: string;
-    description: string;
-    }
+import { ProductState } from './productSlice'
 
 export interface ProductCardProps {
-    product: Product;
+    product: ProductState;
     quantity: number,
 }
 
@@ -32,10 +24,10 @@ export const cartSlice = createSlice({
         AddToCart: (state, action: PayloadAction<ProductCardProps>) => {
             state.products.push(action.payload);
         },
-        DeleteFromCart: (state, action: PayloadAction<number>) => {
+        DeleteFromCart: (state, action: PayloadAction<string>) => {
             state.products = state.products.filter((productProp: ProductCardProps) => productProp.product.id !== action.payload);
         },
-        SetQuantity: (state, action: PayloadAction<{id: number, quantity: number}>) => {
+        SetQuantity: (state, action: PayloadAction<{id: string, quantity: number}>) => {
             state.products = state.products.map((productProp: ProductCardProps) => {
                 if (productProp.product.id === action.payload.id) {
                     productProp.quantity = productProp.quantity - action.payload.quantity;

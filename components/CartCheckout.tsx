@@ -1,20 +1,4 @@
-import { DeleteFromCart, SetQuantity, SetTotal } from "@/redux/cartSlice";
-import { useAppDispatch } from "@/redux/hooks";
-import { useState, useEffect } from "react";
-
-interface Product {
-    id: number;
-    name: string;
-    category: string;
-    price: number;
-    image: string;
-    description: string;
-};
-
-interface ProductCardProps {
-  product: Product;
-  quantity: number;
-}
+import { ProductCardProps } from "@/redux/cartSlice";
 
 const CartCheckout: React.FC<ProductCardProps> = ({ product, quantity }) => {
     return (

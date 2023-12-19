@@ -8,7 +8,7 @@ const ShowProfile = () => {
         firstName: 'John',
         lastName: 'Doe',
         email: 'john.doe@example.com',
-        address: '123 Main St. Anytown, USA',
+        address: '',
       };
     
       const [address, setAddress] = useState(profileData.address);
@@ -38,7 +38,7 @@ const ShowProfile = () => {
                 <div className="flex items-center justify-center">
                     <img src="no-photo.jpg" alt="Foto de perfil" className="w-20 h-20 rounded-full" />
                     <button onClick={handleUpdateProfilePicture}>
-                        <PencilIcon className="mt-14 w-6 h-6 text-gray-300"/>
+                        <PencilIcon className="mt-14 w-6 h-6 text-yellow-300"/>
                     </button>
                     </div>
                 <div>
@@ -63,7 +63,7 @@ const ShowProfile = () => {
                                     value={address}
                                     style={{background: "#9acd1b", borderRadius: 20}}
                                     className="text-white w-full sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5 placeholder-white" 
-                                    placeholder="Dirección" 
+                                    placeholder="123 Main St. Anytown, USA" 
                                     required />
                             </div>
                 <button

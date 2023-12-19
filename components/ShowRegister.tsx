@@ -8,7 +8,6 @@ import { HomeIcon } from '@heroicons/react/solid';
 
 const ShowRegister = () => {
 
-
     const [mutateRegister, { data, loading, error }] = useMutation(register);
 
     const router = useRouter()

@@ -1,9 +1,11 @@
+"use client";
 import HeaderGuest from '@/components/commons/HeaderGuest';
 import HeaderRegistered from '@/components/commons/HeaderRegistered';
 import CheckoutSummary from '@/components/ShowCheckoutSummary';
+import { useAppSelector } from '@/redux/hooks';
 
 export default function Summary() {
-  const isUserAuthenticated = false; //Implementar método para ver si el usuario está autenticado o no
+  const isUserAuthenticated = useAppSelector(state => state.auth.isAuthenticated);
   
   return (
     <div className='mb-4'>
