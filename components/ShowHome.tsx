@@ -2,6 +2,7 @@
 import { FilterIcon, RefreshIcon, ExclamationIcon } from "@heroicons/react/solid";
 import ProductCard from './ProductCard';
 import { useState } from "react";
+import React from "react";
 
 const products = [
   {

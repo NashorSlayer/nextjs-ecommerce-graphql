@@ -2,6 +2,8 @@
 import Link from 'next/link';
 // @ts-ignore
 import { LocationMarkerIcon, UserCircleIcon } from '@heroicons/react/solid';
+import ProfilePopup from './ProfilePopup';
+import React from "react";
 
 const HeaderAdmin = () => {
     return (
@@ -24,10 +26,8 @@ const HeaderAdmin = () => {
                     </div>
                 </div>
                 <div className="ml-2 flex items-center space-x-4">
-                    {/* <Link href="/admin/profile"> */}
-                        <UserCircleIcon className="w-12 h-12 ml-4 text-gray-300" />
-                    {/* </Link> */}
-                </div>  
+                    <ProfilePopup />
+                </div> 
             </div>
         </header>
     );

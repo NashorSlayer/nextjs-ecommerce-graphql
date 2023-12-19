@@ -5,6 +5,7 @@ import { useAppSelector } from '@/redux/hooks';
 import { ShoppingCartIcon, LocationMarkerIcon } from '@heroicons/react/solid';
 import { useState } from 'react';
 import CartDetailsPopup from '../CartDetailsPopup';
+import React from "react";
 
 const HeaderGuest = () => {
     const cartItems = useAppSelector((state) => state.cart.products);
