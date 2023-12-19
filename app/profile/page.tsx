@@ -1,5 +1,6 @@
 import ShowProfile from "@/components/ShowProfile";
 import HeaderRegistered from '@/components/commons/HeaderRegistered';
+import React from 'react';
 
 const Profile = () => {
     return (

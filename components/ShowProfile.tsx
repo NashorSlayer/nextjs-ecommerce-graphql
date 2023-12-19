@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import { PencilIcon } from "@heroicons/react/solid";
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
+import React from "react";
 
 const ShowProfile = () => {
     const profileData = {

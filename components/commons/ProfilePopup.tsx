@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { UserCircleIcon, LogoutIcon, UserIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
+import React from "react";
 
 const ProfilePopup = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);

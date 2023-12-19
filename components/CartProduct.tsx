@@ -4,6 +4,7 @@ import { TrashIcon } from "@heroicons/react/solid";
 import { useState, useEffect } from "react";
 import { ProductState } from "@/redux/productSlice";
 import { ProductCardProps } from "@/redux/cartSlice";
+import React from "react";
 
 const CartProduct: React.FC<ProductCardProps> = ({ product, quantity }) => {
     const [deleteQuantity, setDeleteQuantity] = useState<number>(0);

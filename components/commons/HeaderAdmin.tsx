@@ -3,6 +3,7 @@ import Link from 'next/link';
 // @ts-ignore
 import { LocationMarkerIcon, UserCircleIcon } from '@heroicons/react/solid';
 import ProfilePopup from './ProfilePopup';
+import React from "react";
 
 const HeaderAdmin = () => {
     return (

@@ -1,5 +1,6 @@
 import ShowShoppingHistory from "@/components/ShowShoppingHistory";
 import HeaderRegistered from '@/components/commons/HeaderRegistered';
+import React from 'react';
 
 const shoppingHistory = () => {
     return (

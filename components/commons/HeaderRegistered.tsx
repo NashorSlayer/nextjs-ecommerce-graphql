@@ -6,6 +6,7 @@ import { ShoppingCartIcon, LocationMarkerIcon, UserCircleIcon } from '@heroicons
 import { useState } from 'react';
 import CartDetailsPopup from '../CartDetailsPopup';
 import ProfilePopup from './ProfilePopup';
+import React from "react";
 
 const HeaderRegistered = () => {
     const cartItems = useAppSelector((state) => state.cart.products);
