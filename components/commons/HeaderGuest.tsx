@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { useAppSelector } from '@/redux/hooks';
 // @ts-ignore
-import { SearchIcon, MenuIcon, ShoppingCartIcon, LocationMarkerIcon } from '@heroicons/react/solid';
+import { ShoppingCartIcon, LocationMarkerIcon } from '@heroicons/react/solid';
 import { useState } from 'react';
 import CartDetailsPopup from '../CartDetailsPopup';
 
@@ -24,18 +24,6 @@ const HeaderGuest = () => {
                 <Link href="/">
                     <img className="w-12 h-12" src="multifruts_logo.png" alt="Logo" />
                 </Link>
-                <div className="flex-grow ml-4">
-                <input
-                    id="search"
-                    name='search'
-                    type="text"
-                    placeholder="Buscar productos"
-                    className="w-full px-4 py-2 border border-gray-600 rounded-lg focus:outline-none focus:border-primary-500 text-gray-900"
-                    />
-                </div>
-                <button>
-                    <SearchIcon className="w-8 h-8 ml-2 text-gray-300" />
-                </button>
                 <div className="flex items-center flex-col">
                     <div className="flex items-center">
                         <LocationMarkerIcon className="w-8 h-8 ml-4 text-gray-300" />
@@ -51,10 +39,9 @@ const HeaderGuest = () => {
                         </select>
                     </div>
                 </div>
-                <div className="ml-4 flex items-center space-x-4">
+                <div className="ml-4 flex items-center space-x-4">   
                     <Link href="/login" className="text-white hover:underline">Iniciar sesión</Link>
                     <Link href="/register" className="text-white hover:underline">Registrarse</Link>
-                </div>
                     <button className="relative" onClick={toggleCartDetails}>
                         <ShoppingCartIcon className="w-8 h-8 ml-4 text-gray-300" />
                         {cartItems.length > 0 && (
@@ -63,6 +50,7 @@ const HeaderGuest = () => {
                         </span>
                         )}
                     </button>
+                </div>
                 {showCartDetails && <CartDetailsPopup onClose={toggleCartDetails} />}
             </div>
         </header>
