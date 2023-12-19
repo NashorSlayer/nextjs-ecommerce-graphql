@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import CartProduct from './CartProduct';
+import React, { useState } from 'react';
+import { useAppSelector } from '@/redux/hooks';
 import CartCheckout from './CartCheckout';
 // import { REALIZAR_PAGO_MUTATION } from "@/graphql/mutations";
 
@@ -11,6 +10,7 @@ const CheckoutSummary = () => {
     const [shippingAddress, setShippingAddress] = useState('');
     const [pickupPerson, setPickupPerson] = useState('');
     const [pickupRut, setPickupRut] = useState('');
+    const [deliveryOption, setDeliveryOption] = useState('domicilio');
 
     const cartItems = useAppSelector((state) => state.cart.products);
     const cartTotal = useAppSelector((state) => state.cart.total);
@@ -22,6 +22,12 @@ const CheckoutSummary = () => {
           setPickupPerson('');
           setPickupRut('');
         }
+      };
+
+      const handleDeliveryOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const option = e.target.value;
+        setDeliveryOption(option);
+        setShippingAddress('');
       };
 
     const handlePayment = async () => {
@@ -101,7 +107,8 @@ const CheckoutSummary = () => {
                     id="domicilio"
                     name="envio"
                     value="domicilio"
-                    onChange={handleAddressChange}
+                    onChange={handleDeliveryOptionChange}
+                    checked={deliveryOption === 'domicilio'}
                   />
                   <label htmlFor="domicilio" className="ml-2 text-sm font-medium text-gray-300">
                     A Domicilio
@@ -113,7 +120,8 @@ const CheckoutSummary = () => {
                     id="retiro"
                     name="envio"
                     value="retiro"
-                    onChange={() => setShippingAddress('')}
+                    onChange={handleDeliveryOptionChange}
+                    checked={deliveryOption === 'retiro'}
                   />
                   <label htmlFor="retiro" className="ml-2 text-sm font-medium text-gray-300">
                     Retiro en Tienda
@@ -121,7 +129,7 @@ const CheckoutSummary = () => {
                 </div>
               </div>
 
-              {shippingAddress && (
+              {deliveryOption === 'domicilio' && (
                 <div className="mt-4">
                   <label htmlFor="direccion" className="block text-sm font-medium text-gray-300">
                     Dirección de Envío:
@@ -131,12 +139,12 @@ const CheckoutSummary = () => {
                     id="direccion"
                     name="direccion"
                     onChange={handleAddressChange}
-                    placeholder='Ej: Calle 1234, La Serena'
+                    placeholder="Ej: Calle 1234, La Serena"
                     className="mt-1 p-2 w-full border rounded-md text-black"
                   />
                 </div>
               )}
-                {!shippingAddress && (
+                {deliveryOption === 'retiro' && (
                 <div className="mt-4">
                     <label htmlFor="pickupPerson" className="block text-sm font-medium text-gray-300">
                     Persona que retira:

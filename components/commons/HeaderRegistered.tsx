@@ -5,6 +5,7 @@ import { useAppSelector } from '@/redux/hooks';
 import { ShoppingCartIcon, LocationMarkerIcon, UserCircleIcon } from '@heroicons/react/solid';
 import { useState } from 'react';
 import CartDetailsPopup from '../CartDetailsPopup';
+import ProfilePopup from './ProfilePopup';
 
 const HeaderRegistered = () => {
     const cartItems = useAppSelector((state) => state.cart.products);
@@ -38,9 +39,9 @@ const HeaderRegistered = () => {
                     </div>
                 </div>
                 <div className="ml-2 flex items-center space-x-4">
-                    <Link href="/profile">
-                        <UserCircleIcon className="w-8 h-8 ml-4 text-gray-300" />
-                    </Link>
+                    <div className="ml-2 flex items-center space-x-4">
+                        <ProfilePopup />
+                    </div>
                     <div className="relative" onClick={toggleCartDetails}>
                         <ShoppingCartIcon className="w-8 h-8 ml-4 text-gray-300" />
                         {cartItems.length > 0 && (
