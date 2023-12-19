@@ -26,22 +26,22 @@ const ShowRegister = () => {
             return alert("Password don't match");
         }
 
-        // const response = await mutateRegister({
-        //     variables: {
-        //         input: {
-        //             email: email,
-        //             password: password,
-        //             firstName: firstName,
-        //             lastName: LastName,
+        const response = await mutateRegister({
+            variables: {
+                input: {
+                    email: email,
+                    password: password,
+                    firstName: firstName,
+                    lastName: LastName,
 
-        //         }
-        //     },
-        // });
-        // console.log(response);
-        // if (!response) {
-        //     return alert("Bad Error")
-        // }
+                }
+            },
+        });
+        console.log(response);
         router.push("/login")
+        if (!response) {
+            return alert("Bad Error")
+        }
     }
 
 

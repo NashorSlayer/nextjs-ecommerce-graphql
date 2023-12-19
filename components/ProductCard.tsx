@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ShoppingCartIcon from '@heroicons/react/outline/ShoppingCartIcon';
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { AddToCart, SetTotal } from "@/redux/cartSlice";
+import ProductDetailsPopup from './ProductDetailsPopup';
 
 interface Product {
     id: number;
@@ -22,15 +23,19 @@ const ProductCard: React.FC<{product: Product}> = ({ product }) => {
   const cartItems = useAppSelector((state) => state.cart.products);
   const dispatch = useAppDispatch();
   const [quantity, setQuantity] = useState<number>(0);
+  const [showDetailsPopup, setShowDetailsPopup] = useState<boolean>(false);
 
   const handleAddToCart = (productProp: ProductCardProps) => {
-    if (cartItems.find((item) => item.product.id === productProp.product.id)) {
-      alert("Este producto ya está en el carrito");
-      return;
-    } else if (productProp.quantity === 0) {
+    if (productProp.quantity === 0) {
       alert("Debes seleccionar una cantidad mayor a 0");
       return;
-    } else {
+    } else if (cartItems.find((item) => item.product.id === productProp.product.id)) {
+      alert("Este producto ya está en el carrito");
+      return;
+    } else if (productProp.quantity > productProp.product.stock){
+      alert("No hay suficiente stock de este producto");
+      return;
+    }else {
       alert("Producto agregado al carrito");
       dispatch(AddToCart(productProp));
       dispatch(SetTotal());
@@ -76,6 +81,12 @@ const ProductCard: React.FC<{product: Product}> = ({ product }) => {
         <button onClick={() => handleAddToCart({product: product, quantity: quantity})} className="bg-primary-500 text-white px-2 py-1 rounded">
           <ShoppingCartIcon className="w-6 h-6" />
         </button>
+        <div className="flex flex-col items-center">
+          <button onClick={() => setShowDetailsPopup(true)} className="text-blue-500">Detalles</button>
+        </div>
+        {showDetailsPopup && (
+          <ProductDetailsPopup product={product} onClose={() => setShowDetailsPopup(false)} />
+        )}
       </div>
     </div>
   );

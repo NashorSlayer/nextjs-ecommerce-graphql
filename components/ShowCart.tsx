@@ -1,9 +1,8 @@
 "use client";
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { ExclamationIcon, TrashIcon } from '@heroicons/react/solid';
+import { ExclamationIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { SetTotal, DeleteFromCart} from '@/redux/cartSlice';
 import CartProduct from './CartProduct';
 // import { REALIZAR_PAGO_MUTATION } from "@/graphql/mutations";
 

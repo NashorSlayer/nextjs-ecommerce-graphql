@@ -3,9 +3,20 @@ import Link from 'next/link';
 import { useAppSelector } from '@/redux/hooks';
 // @ts-ignore
 import { SearchIcon, MenuIcon, ShoppingCartIcon, LocationMarkerIcon, UserCircleIcon } from '@heroicons/react/solid';
+import { useState } from 'react';
+import CartDetailsPopup from '../CartDetailsPopup';
 
 const HeaderRegistered = () => {
     const cartItems = useAppSelector((state) => state.cart.products);
+    const [showCartDetails, setShowCartDetails] = useState<boolean>(false);
+
+    const getTotalQuantity = () => {
+        return cartItems.reduce((total, product) => total + product.quantity, 0);
+    };
+    
+    const toggleCartDetails = () => {
+        setShowCartDetails(!showCartDetails);
+    };
 
     return (
         <header className="bg-gray-800">
@@ -41,16 +52,15 @@ const HeaderRegistered = () => {
                         <UserCircleIcon className="w-8 h-8 ml-4 text-gray-300" />
                     </Link>
                 </div>
-                <Link href="/cart">
-                    <div className="relative">
+                    <div className="relative" onClick={toggleCartDetails}>
                         <ShoppingCartIcon className="w-8 h-8 ml-4 text-gray-300" />
                         {cartItems.length > 0 && (
                         <span className="absolute -top-1 -right-7 bg-red-500 text-white px-2 py-1 rounded-full">
-                            {cartItems.length}
+                            {getTotalQuantity()}
                         </span>
                         )}
                     </div>
-                </Link>
+                {showCartDetails && <CartDetailsPopup onClose={toggleCartDetails} />}
             </div>
         </header>
     );
