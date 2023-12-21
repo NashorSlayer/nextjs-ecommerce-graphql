@@ -20,7 +20,7 @@ const CheckoutSummary = () => {
   const cartItems = useAppSelector((state) => state.cart.products);
   const cartTotal = useAppSelector((state) => state.cart.total);
 
-  const token_ws = localStorage.getItem('token_ws');
+  const token_ws = localStorage.getItem('token_ws')!;
   const router = useRouter()
   const dispatch = useAppDispatch();
 
@@ -60,7 +60,7 @@ const CheckoutSummary = () => {
     const response = await mutatePayment({
       variables: {
         payment: {
-          amount: cartTotal,
+          amount: cartTotal * 1000,
         }
       },
     });
@@ -68,6 +68,7 @@ const CheckoutSummary = () => {
       return alert("Bad Error")
     }
     const payload = response.data.createPayment;
+    console.log(payload)
     dispatch(updatePayment({
       url: payload.url,
       token_ws: payload.token

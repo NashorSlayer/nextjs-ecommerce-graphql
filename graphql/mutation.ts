@@ -34,10 +34,12 @@ register(input:$input){
 `;
 
 export const createTransaction = gql`
-    mutation createPayment($payment:PaymentData!){
-  createPayment(payment:$payment){
-  token
-  url
+    mutation Payment($payment: PaymentData!){
+  createPayment(
+    payment: $payment
+  ){
+    token
+    url
   }
 }
 `;
