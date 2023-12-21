@@ -17,6 +17,7 @@ const ProfilePopup = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("token_ws");
     router.push("/login")
   }
 
@@ -33,11 +34,11 @@ const ProfilePopup = () => {
       </div>
       {isPopupOpen && (
         <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
-        style={{background: "#353734", borderColor: "#9acd1b", borderWidth: 2, borderRadius: 20}}>
+          style={{ background: "#353734", borderColor: "#9acd1b", borderWidth: 2, borderRadius: 20 }}>
           <div className="py-1 ">
             <Link href="/profile">
               <p className="text-bold flex items-center justify-center block px-4 py-2 text-sm text-white">
-                <UserIcon className='w-4 h-4 mr-2'/> Ir al perfil
+                <UserIcon className='w-4 h-4 mr-2' /> Ir al perfil
               </p>
             </Link>
             <button

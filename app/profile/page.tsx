@@ -5,7 +5,8 @@ import React from 'react';
 const Profile = () => {
     return (
         <div className='mb-4'>
-            <HeaderRegistered></HeaderRegistered><ShowProfile></ShowProfile>
+            <HeaderRegistered></HeaderRegistered>
+            <ShowProfile></ShowProfile>
         </div>
     );
 }

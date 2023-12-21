@@ -9,7 +9,6 @@ import { updatePayment } from '@/redux/paymentSlice';
 import { useRouter } from 'next/navigation';
 const CheckoutSummary = () => {
   const [mutatePayment] = useMutation(createTransaction);
-  const [mutateConfirmPayment] = useMutation(confirmTransaction);
 
 
   const [shippingAddress, setShippingAddress] = useState('');
@@ -20,26 +19,11 @@ const CheckoutSummary = () => {
   const cartItems = useAppSelector((state) => state.cart.products);
   const cartTotal = useAppSelector((state) => state.cart.total);
 
-  const token_ws = localStorage.getItem('token_ws')!;
+
   const router = useRouter()
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    if (token_ws !== '') {
-      const confirmPayment = async () => {
-        const response = await mutateConfirmPayment({
-          variables: {
-            ws_token: token_ws
-          }
-        });
-        console.log(response.data.confirmPayment.response_code);
-        if (response.data.confirmPayment.response_code === 0) {
-          console.log("Payment confirmed");
-        }
-      }
-      confirmPayment();
-    }
-  }, []);
+
 
   const handleAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
@@ -60,7 +44,7 @@ const CheckoutSummary = () => {
     const response = await mutatePayment({
       variables: {
         payment: {
-          amount: cartTotal * 1000,
+          amount: cartTotal,
         }
       },
     });

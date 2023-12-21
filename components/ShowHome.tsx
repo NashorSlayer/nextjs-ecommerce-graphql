@@ -2,12 +2,13 @@
 "use client"
 import { FilterIcon, RefreshIcon, ExclamationIcon } from "@heroicons/react/solid";
 import ProductCard from './ProductCard';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import { GetProducts } from "@/graphql/query";
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { ProductState, UpdateProduct } from "@/redux/productSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { confirmTransaction } from "@/graphql/mutation";
 
 const products = [
   {
@@ -30,6 +31,8 @@ const ShowHome = () => {
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
+  const [mutateConfirmPayment] = useMutation(confirmTransaction);
+
   const [originalProducts, setOriginalProducts] = useState(products);
   const [discount, setDiscount] = useState("none");
 
@@ -43,6 +46,27 @@ const ShowHome = () => {
 
     return categoryFilter && minPriceFilter && maxPriceFilter && discountFilter;
   });
+
+
+  const token_ws = localStorage.getItem('token_ws')!;
+  useEffect(() => {
+    if (token_ws !== '') {
+      const confirmPayment = async () => {
+        const response = await mutateConfirmPayment({
+          variables: {
+            ws_token: token_ws
+          }
+        });
+        console.log(response.data.confirmPayment.response_code);
+        if (response.data.confirmPayment.response_code === 0) {
+          alert("Pago Confirmado");
+        } else if (response.data.confirmPayment.response_code === -1) {
+          alert("Pago Rechazado")
+        }
+      }
+      confirmPayment();
+    }
+  }, []);
 
 
   const dispatch = useAppDispatch();
@@ -163,7 +187,6 @@ const ShowHome = () => {
                 />
               </div>
             );
-            console.log(product);
           })
         )}
       </main>
