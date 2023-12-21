@@ -3,12 +3,118 @@ import { FilterIcon, RefreshIcon, ExclamationIcon } from "@heroicons/react/solid
 import ProductCard from './ProductCard';
 import { useState } from "react";
 import React from "react";
-import { useQuery } from "@apollo/client";
-import { GetProducts } from "../graphql/query";
-import { ProductState } from "@/redux/productSlice";
 
-const {loading, error, data} = useQuery(GetProducts);
-  const products = data?.getProducts;
+const products = [
+  {
+    id: '1',
+    name: 'Almendras',
+    category: 'A granel',
+    price: 100,
+    stock: 100,
+    image: 'no-image.jpg',
+    description: 'Almendras de California',
+  },
+  {
+    id: '2',
+    name: 'Amaranto',
+    category: 'A granel',
+    price: 100,
+    stock: 100,
+    image: 'no-image.jpg',
+    description: 'Amaranto de la India',
+  },
+  {
+    id: '3',
+    name: 'Arroz integral',
+    category: 'A granel',
+    price: 100,
+    stock: 100,
+    image: 'no-image.jpg',
+    description: 'Arroz integral de la India',
+  },
+  {
+    id: '4',
+    name: 'Arroz rojo',
+    category: 'A granel',
+    price: 100,
+    stock: 100,
+    image: 'no-image.jpg',
+    description: 'Arroz rojo de la India',
+  },
+  {
+    id: '5',
+    name: 'Arroz salvaje',
+    category: 'A granel',
+    price: 100,
+    stock: 100,
+    image: 'no-image.jpg',
+    description: 'Arroz salvaje de la India',
+  },
+  {
+    id: '6',
+    name: 'Cacahuate',
+    category: 'A granel',
+    price: 100,
+    stock: 100,
+    image: 'no-image.jpg',
+    description: 'Cacahuate de la India',
+  },
+  {
+    id: '7',
+    name: 'Cacao',
+    category: 'A granel',
+    price: 100,
+    stock: 100,
+    image: 'no-image.jpg',
+    description: 'Cacao de la India',
+  },
+  {
+    id: '8',
+    name: 'Café',
+    category: 'A granel',
+    price: 100,
+    stock: 100,
+    image: 'no-image.jpg',
+    description: 'Café de la India',
+  },
+  {
+    id: '9',
+    name: 'Canela',
+    category: 'A granel',
+    price: 100,
+    stock: 100,
+    image: 'no-image.jpg',
+    description: 'Canela de la India',
+  },
+  {
+    id: '10',
+    name: 'Chía',
+    category: 'A granel',
+    price: 100,
+    stock: 100,
+    image: 'no-image.jpg',
+    description: 'Chía de la India',
+  },
+  {
+    id: '11',
+    name: 'Coco',
+    category: 'A granel',
+    price: 100,
+    stock: 0,
+    image: 'no-image.jpg',
+    description: 'Coco de la India',
+  },
+  {
+    id: '12',
+    name: 'Cúrcuma',
+    category: 'A granel',
+    price: 100,
+    stock: 100,
+    image: 'no-image.jpg',
+    description: 'Cúrcuma de la India',
+  },
+];
+  
 
 const ShowHome = () => {
   const productsPerPage = 4;
@@ -19,11 +125,10 @@ const ShowHome = () => {
   const [maxPrice, setMaxPrice] = useState("");
   const [originalProducts, setOriginalProducts] = useState(products);
   const [discount, setDiscount] = useState("none");
-  
-  
-  const availableProducts = originalProducts.filter((product: { stock: number; }) => product.stock > 0);
 
-  const filteredProducts = availableProducts.filter((product: { category: string; price: number; }) => {
+  const availableProducts = originalProducts.filter((product) => product.stock > 0);
+
+  const filteredProducts = availableProducts.filter((product) => {
     const categoryFilter = selectedCategory === "Todos" || product.category === selectedCategory;
     const minPriceFilter = minPrice === "" || product.price >= Number(minPrice);
     const maxPriceFilter = maxPrice === "" || product.price <= Number(maxPrice);
@@ -196,7 +301,7 @@ const ShowHome = () => {
         <main className="flex-1 p-6 bg-gray-700 rounded shadow-md mt-auto mb-auto text-sm ml-12 mr-12" style={{background: "#353734", borderColor: "#9acd1b", borderWidth: 5, borderRadius: 60}}>
           {currentProducts.length > 0 ? (
             <div className="grid gap-1">
-              {currentProducts.map((product: ProductState, index: React.Key | null | undefined) => (
+              {currentProducts.map((product, index) => (
                 <ProductCard key={index} product={product} />
               ))}
             </div>
