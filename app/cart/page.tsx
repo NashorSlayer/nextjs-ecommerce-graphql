@@ -6,11 +6,11 @@ import { useAppSelector } from '@/redux/hooks';
 import React from "react";
 
 export default function Cart() {
-  const isUserAuthenticated = useAppSelector(state => state.auth.isAuthenticated);
-  
+  const token = localStorage.getItem('token');
+
   return (
     <div className='mb-4'>
-      {isUserAuthenticated ? <HeaderRegistered /> : <HeaderGuest />}
+      {token ? <HeaderRegistered /> : <HeaderGuest />}
       <ShowCart />
     </div>
   );

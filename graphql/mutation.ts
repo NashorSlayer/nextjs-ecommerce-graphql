@@ -41,3 +41,19 @@ export const createTransaction = gql`
   }
 }
 `;
+
+export const confirmTransaction = gql`
+    mutation PaymentConfirm($ws_token: String!){
+  confirmPayment(
+    ws_token: $ws_token
+  ){
+  	amount
+    status
+    buy_order
+    transaction_date
+  }
+}
+`;
+
+
+

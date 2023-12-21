@@ -1,49 +1,86 @@
 "use client";
 
-import React, { useState } from 'react';
-import { useAppSelector } from '../redux/hooks';
+import React, { use, useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import CartCheckout from './CartCheckout';
-import { createTransaction } from "../graphql/mutation";
+import { confirmTransaction, createTransaction } from "../graphql/mutation";
 import { useMutation } from '@apollo/client';
-
+import { updatePayment } from '@/redux/paymentSlice';
+import { useRouter } from 'next/navigation';
 const CheckoutSummary = () => {
   const [mutatePayment] = useMutation(createTransaction);
-    const [shippingAddress, setShippingAddress] = useState('');
-    const [pickupPerson, setPickupPerson] = useState('');
-    const [pickupRut, setPickupRut] = useState('');
-    const [deliveryOption, setDeliveryOption] = useState('domicilio');
+  const [mutateConfirmPayment] = useMutation(confirmTransaction);
 
-    const cartItems = useAppSelector((state) => state.cart.products);
-    const cartTotal = useAppSelector((state) => state.cart.total);
 
-    const handleAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const inputValue = e.target.value;
-        if (inputValue.trim() !== '') {
-          setShippingAddress(inputValue);
-          setPickupPerson('');
-          setPickupRut('');
-        }
-      };
+  const [shippingAddress, setShippingAddress] = useState('');
+  const [pickupPerson, setPickupPerson] = useState('');
+  const [pickupRut, setPickupRut] = useState('');
+  const [deliveryOption, setDeliveryOption] = useState('domicilio');
 
-      const handleDeliveryOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const option = e.target.value;
-        setDeliveryOption(option);
-        setShippingAddress('');
-      };
+  const cartItems = useAppSelector((state) => state.cart.products);
+  const cartTotal = useAppSelector((state) => state.cart.total);
 
-    const handlePayment = async () => {
-      const response = await mutatePayment({
+  const token_ws = localStorage.getItem('token_ws');
+  const router = useRouter()
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    console.log(localStorage.getItem('token_ws'));
+    if (token_ws !== '') {
+      const confirmPayment = async () => {
+        const response = await mutateConfirmPayment({
           variables: {
-              payment: {
-                  amount: cartTotal,
-              }
-          },
-      });
-      console.log(response);
-      if (!response) {
+            ws_token: token_ws
+          }
+        });
+        if (!response) {
           return alert("Bad Error")
+        }
+        if (response.data.confirmPayment.status === 'AUTHORIZED') {
+          console.log("Payment confirmed");
+        }
       }
-    };
+      confirmPayment();
+
+    }
+  }, []);
+
+  const handleAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    if (inputValue.trim() !== '') {
+      setShippingAddress(inputValue);
+      setPickupPerson('');
+      setPickupRut('');
+    }
+  };
+
+  const handleDeliveryOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const option = e.target.value;
+    setDeliveryOption(option);
+    setShippingAddress('');
+  };
+
+  const handlePayment = async () => {
+    const response = await mutatePayment({
+      variables: {
+        payment: {
+          amount: cartTotal,
+        }
+      },
+    });
+    if (!response) {
+      return alert("Bad Error")
+    }
+    const payload = response.data.createPayment;
+    dispatch(updatePayment({
+      url: payload.url,
+      token_ws: payload.token
+    }));
+    localStorage.setItem('token_ws', payload.token);
+    router.push("/cart/checkout/payment");
+  };
+
+
 
   return (
     <section>
@@ -143,12 +180,12 @@ const CheckoutSummary = () => {
                   />
                 </div>
               )}
-                {deliveryOption === 'retiro' && (
+              {deliveryOption === 'retiro' && (
                 <div className="mt-4">
-                    <label htmlFor="pickupPerson" className="block text-sm font-medium text-gray-300">
+                  <label htmlFor="pickupPerson" className="block text-sm font-medium text-gray-300">
                     Persona que retira:
-                    </label>
-                    <input
+                  </label>
+                  <input
                     type="text"
                     id="pickupPerson"
                     name="pickupPerson"
@@ -156,12 +193,12 @@ const CheckoutSummary = () => {
                     onChange={(e) => setPickupPerson(e.target.value)}
                     placeholder='Ej: Juan Pérez'
                     className="mt-1 p-2 w-full border rounded-md text-black"
-                    />
+                  />
 
-                    <label htmlFor="pickupRut" className="block text-sm font-medium text-gray-300 mt-2">
+                  <label htmlFor="pickupRut" className="block text-sm font-medium text-gray-300 mt-2">
                     RUT de la persona que retira:
-                    </label>
-                    <input
+                  </label>
+                  <input
                     type="text"
                     id="pickupRut"
                     name="pickupRut"
@@ -169,19 +206,18 @@ const CheckoutSummary = () => {
                     onChange={(e) => setPickupRut(e.target.value)}
                     placeholder='Ej: 12.345.678-9'
                     className="mt-1 p-2 w-full border rounded-md text-black"
-                    />
+                  />
                 </div>
-                )}
+              )}
               <div className="flex items-center justify-center">
                 <button
                   disabled={cartItems.length === 0}
                   style={{ width: "80%", backgroundColor: "#9acd1b", borderRadius: 20 }}
                   onClick={handlePayment}
-                  className={`${
-                    cartItems.length === 0
-                      ? 'bg-gray-300 cursor-not-allowed'
-                      : 'bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300'
-                  } text-white font-medium text-sm px-5 py-3 text-center border-2 border-primary-600`}
+                  className={`${cartItems.length === 0
+                    ? 'bg-gray-300 cursor-not-allowed'
+                    : 'bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300'
+                    } text-white font-medium text-sm px-5 py-3 text-center border-2 border-primary-600`}
                 >
                   Realizar compra
                 </button>
