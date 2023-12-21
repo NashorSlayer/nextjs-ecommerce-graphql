@@ -1,14 +1,24 @@
+'use client';
 import { useState } from 'react';
 import { UserCircleIcon, LogoutIcon, UserIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
 import React from "react";
+import { useRouter } from 'next/navigation';
 
 const ProfilePopup = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
+  const token = localStorage.getItem('token');
+
+  const router = useRouter()
 
   const togglePopup = () => {
     setPopupOpen(!isPopupOpen);
   };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    router.push("/login")
+  }
 
   return (
     <div className="relative inline-block text-left">
@@ -35,7 +45,9 @@ const ProfilePopup = () => {
               onClick={togglePopup}
               className="text-bold flex items-center justify-center block w-full text-left px-4 py-2 text-sm text-red-600"
             >
+              <button type='button' onClick={handleLogout}>
                 <LogoutIcon className="w-4 h-4 mr-2" />Cerrar sesión
+              </button>
             </button>
           </div>
         </div>

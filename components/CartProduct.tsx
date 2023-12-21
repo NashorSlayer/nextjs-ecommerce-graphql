@@ -11,7 +11,6 @@ const CartProduct: React.FC<ProductCardProps> = ({ product, quantity }) => {
     const dispatch = useAppDispatch();
     
     const removeFromCart = (product: ProductState) => {
-        console.log(deleteQuantity)
         if (deleteQuantity === 0) {
         alert("Debes seleccionar una cantidad mayor a 0");
         return;

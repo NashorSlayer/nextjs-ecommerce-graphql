@@ -2,31 +2,27 @@
 import { useState } from "react";
 import { PencilIcon } from "@heroicons/react/solid";
 import { useRouter } from 'next/navigation';
+import { updateUser } from "../graphql/mutation";
 import React from "react";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { UpdateAddress } from "../redux/userSlice";
+import { useMutation } from "@apollo/client";
 
 const ShowProfile = () => {
+    const user = useAppSelector((state) => state.user);
     const profileData = {
-        firstName: 'John',
-        lastName: 'Doe',
-        email: 'john.doe@example.com',
-        address: '',
+        id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
       };
-    
-      const [address, setAddress] = useState(profileData.address);
 
       const router = useRouter()
-    
-      const handleUpdateProfile = () => {
-        // Implementar la lógica para actualizar los datos del perfil
-      };
     
     const handleShoppingHistory = () => {
         router.push("/profile/shoppingHistory")
       };
 
-    const handleUpdateProfilePicture = () => {
-        // Implementar la lógica para actualizar la foto de perfil
-      };
 
       return (
         <section>
@@ -36,42 +32,18 @@ const ShowProfile = () => {
                 <h1 className="flex items-center justify-center text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                   Información del perfil
                 </h1>
-                <div className="flex items-center justify-center">
-                    <img src="no-photo.jpg" alt="Foto de perfil" className="w-20 h-20 rounded-full" />
-                    <button onClick={handleUpdateProfilePicture}>
-                        <PencilIcon className="mt-14 w-6 h-6 text-yellow-300"/>
-                    </button>
-                    </div>
                 <div>
-                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
-                  <p>{profileData.firstName}</p>
+                  <label className="flex items-center justify-center block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+                  <p className="flex items-center justify-center">{profileData.firstName}</p>
                 </div>
                 <div>
-                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido</label>
-                  <p>{profileData.lastName}</p>
+                  <label className="flex items-center justify-center block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido</label>
+                  <p className="flex items-center justify-center">{profileData.lastName}</p>
                 </div>
                 <div>
-                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo Electrónico</label>
-                  <p>{profileData.email}</p>
+                  <label className="flex items-center justify-center block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo Electrónico</label>
+                  <p className="flex items-center justify-center">{profileData.email}</p>
                 </div>
-                <div>
-                                <label id="address" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dirección</label>
-                                <input
-                                    onChange={(event) => setAddress(event.target.value)}
-                                    type="address"
-                                    name="address"
-                                    id="address"
-                                    value={address}
-                                    style={{background: "#9acd1b", borderRadius: 20}}
-                                    className="text-white w-full sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5 placeholder-white" 
-                                    placeholder="123 Main St. Anytown, USA" 
-                                    required />
-                            </div>
-                <button
-                  onClick={handleUpdateProfile}
-                  className="mt-4 ml-10 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium text-sm px-5 py-3 text-center border-2 border-primary-600" style={{width: "80%", backgroundColor: "#9acd1b", borderRadius: 20}}>
-                  Actualizar Datos
-                </button>
                 <button
                   onClick={handleShoppingHistory}
                   className="mt-4 ml-10 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 text-white font-medium text-sm px-5 py-3 text-center border-2 border-primary-600" style={{width: "80%", backgroundColor: "#9acd1b", borderRadius: 20}}>
