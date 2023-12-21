@@ -48,7 +48,7 @@ export const confirmTransaction = gql`
     ws_token: $ws_token
   ){
   	amount
-    status
+    response_code
     buy_order
     transaction_date
   }

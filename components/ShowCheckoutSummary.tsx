@@ -25,7 +25,6 @@ const CheckoutSummary = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    console.log(localStorage.getItem('token_ws'));
     if (token_ws !== '') {
       const confirmPayment = async () => {
         const response = await mutateConfirmPayment({
@@ -33,6 +32,7 @@ const CheckoutSummary = () => {
             ws_token: token_ws
           }
         });
+        console.log("response", response);
         if (!response) {
           return alert("Bad Error")
         }
@@ -41,7 +41,6 @@ const CheckoutSummary = () => {
         }
       }
       confirmPayment();
-
     }
   }, []);
 
@@ -79,8 +78,6 @@ const CheckoutSummary = () => {
     localStorage.setItem('token_ws', payload.token);
     router.push("/cart/checkout/payment");
   };
-
-
 
   return (
     <section>
