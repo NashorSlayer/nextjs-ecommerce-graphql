@@ -5,6 +5,8 @@ import CartProduct from '../../components/CartProduct';
 import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
 
+global.alert = jest.fn();
+
 jest.mock('../../redux/hooks', () => ({
   useAppDispatch: jest.fn(),
 }));
@@ -39,5 +41,9 @@ describe('CartProduct component', () => {
         
     expect(screen.getByText('Product 1')).toBeInTheDocument();
     expect(screen.getByText('$20')).toBeInTheDocument();
+  });
+
+  test('removeFromCart function handles cases correctly', () => {
+    
   });
 });

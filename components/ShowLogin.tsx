@@ -5,32 +5,43 @@ import { login } from '../graphql/mutation';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation'
 import { HomeIcon } from '@heroicons/react/solid';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { GetUser } from '../redux/userSlice';
 
 const ShowLogin = () => {
 
     const [mutateLogin, { data, loading, error }] = useMutation(login);
-
+    const user = useAppSelector((state) => state.user);
     const router = useRouter()
 
     //login
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    const dispatch = useAppDispatch();
 
     const handleLogin = async (event: MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
-        // const response = await mutateLogin({
-        //     variables: {
-        //         input: {
-        //             email: email,
-        //             password: password,
-        //         }
-        //     },
-        // });
-        // console.log(response);
-        // if (!response) {
-        //     return alert("Bad Error")
-        // }
+        const response = await mutateLogin({
+            variables: {
+                input: {
+                    email: email,
+                    password: password,
+                }
+            },
+        });
+        if (!response) {
+            return alert("Bad Error")
+        }
+        const payload = response.data.login.user;
+        localStorage.setItem("token", response.data.login.token);
+        dispatch(GetUser({
+            id: payload.id,
+            email: payload.email,
+            firstName: payload.firstName,
+            lastName: payload.lastName,
+            Cart: payload.Cart,
+            Historical: payload.Historical,
+        }));
         router.push("/")
 
     }
@@ -82,7 +93,6 @@ const ShowLogin = () => {
                                         <label id="remember" className="text-gray-500 dark:text-gray-300">Recordar</label>
                                     </div>
                                 </div>
-                                <a href="/resetPassword" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">¿Olvidaste tu contraseña?</a>
                             </div>
             
                             <button

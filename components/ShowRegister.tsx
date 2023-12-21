@@ -36,7 +36,6 @@ const ShowRegister = () => {
                 }
             },
         });
-        console.log(response);
         router.push("/login")
         if (!response) {
             return alert("Bad Error")
