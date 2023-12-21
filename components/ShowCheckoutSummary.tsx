@@ -32,11 +32,8 @@ const CheckoutSummary = () => {
             ws_token: token_ws
           }
         });
-        console.log("response", response);
-        if (!response) {
-          return alert("Bad Error")
-        }
-        if (response.data.confirmPayment.status === 'AUTHORIZED') {
+        console.log(response.data.confirmPayment.response_code);
+        if (response.data.confirmPayment.response_code === 0) {
           console.log("Payment confirmed");
         }
       }
