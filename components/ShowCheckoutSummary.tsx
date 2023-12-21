@@ -3,10 +3,11 @@
 import React, { useState } from 'react';
 import { useAppSelector } from '../redux/hooks';
 import CartCheckout from './CartCheckout';
-// import { REALIZAR_PAGO_MUTATION } from "@/graphql/mutations";
+import { createTransaction } from "../graphql/mutation";
+import { useMutation } from '@apollo/client';
 
 const CheckoutSummary = () => {
-  // const [realizarPago] = useMutation(REALIZAR_PAGO_MUTATION);
+  const [mutatePayment] = useMutation(createTransaction);
     const [shippingAddress, setShippingAddress] = useState('');
     const [pickupPerson, setPickupPerson] = useState('');
     const [pickupRut, setPickupRut] = useState('');
@@ -31,19 +32,17 @@ const CheckoutSummary = () => {
       };
 
     const handlePayment = async () => {
-        console.log('Realizando pago...');
-        console.log('Dirección de envío:', shippingAddress);
-        console.log('Productos en el carrito:', cartItems);
-        console.log('Total a pagar:', cartTotal);
-        // try {
-        //   const { data } = await realizarPago({
-        //     variables: {
-        //     },
-        //   });
-
-        // } catch (error) {
-        //   console.log(error);
-        // }
+      const response = await mutatePayment({
+          variables: {
+              payment: {
+                  amount: cartTotal,
+              }
+          },
+      });
+      console.log(response);
+      if (!response) {
+          return alert("Bad Error")
+      }
     };
 
   return (
