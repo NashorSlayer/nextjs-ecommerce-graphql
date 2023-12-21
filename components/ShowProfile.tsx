@@ -1,12 +1,8 @@
 "use client";
-import { useState } from "react";
-import { PencilIcon } from "@heroicons/react/solid";
+
 import { useRouter } from 'next/navigation';
-import { updateUser } from "../graphql/mutation";
 import React from "react";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { UpdateAddress } from "../redux/userSlice";
-import { useMutation } from "@apollo/client";
+import { useAppSelector } from "../redux/hooks";
 
 const ShowProfile = () => {
     const user = useAppSelector((state) => state.user);

@@ -33,11 +33,11 @@ register(input:$input){
 }
 `;
 
-export const updateUser = gql`
-  mutation updateUser($input:UpdateUser!){
-    updateUser(input:$input){
-      address
-      image
-    }
+export const createTransaction = gql`
+    mutation createPayment($payment:PaymentData!){
+  createPayment(payment:$payment){
+  token
+  url
   }
+}
 `;
