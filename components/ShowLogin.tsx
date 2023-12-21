@@ -35,7 +35,6 @@ const ShowLogin = () => {
 
         const payload = response.data.login;
         const user = payload.user;
-        console.log(user)
         localStorage.setItem("token", payload.access_token);
         dispatch(GetUser({
             id: user.id,
